@@ -36,7 +36,7 @@ function checkTracking() {
     const displayCode = document.getElementById('displayTrackingCode');
     
     if (rawInput === "") {
-        alert("Please enter a tracking number!");
+        alert("Please enter a tracking number");
         return;
     }
     
@@ -51,3 +51,10 @@ function checkTracking() {
         resultBox.classList.remove('hidden');
     }, 400); 
 }
+
+ document.addEventListener('DOMContentLoaded', () => {
+    const cart = JSON.parse(localStorage.getItem('plug_cart')) || [];
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    const badge = document.getElementById('navCartCountBadge');
+    if (badge) badge.textContent = totalItems;
+  });
