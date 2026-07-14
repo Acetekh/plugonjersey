@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLUG. | Premium Football Streetwear</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        #carousel-container {
+            scroll-snap-type: x mandatory;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        #cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+
+        #cursor-ring {
+            width: 36px;
+            height: 36px;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.10s ease, width 0.3s ease, height 0.3s ease, background 0.8s ease;
+        }
+
+        #cursor-ring.hovering {
+            width: 60px;
+            height: 60px;
+            background: rgba(59, 130, 246, 0.1);
+            border-color: #3b82f6;
+        }
+        
+    </style>
+    
+</head>
+
+<body class="bg-[#0B0C0E] text-white antialiased">
+
+    <!-- MAIN PAGE WRAPPER -->
+    <div class="w-full min-h-screen pb-16 px-4 md:px-8">
+
+        <!-- SITE CONTAINER (Keeps Navbar, Hero, and Products perfectly aligned in the center) -->
+        <div class="max-w-7xl mx-auto flex flex-col gap-8">
+
+           
+            <header class="w-full pt-6 relative z-50 sticky top-0">
+                <nav
+                    class="w-full h-16 bg-neutral-900 border border-[#202226] rounded-full px-6 md:px-8 flex items-center justify-between">
+                    <!-- Mobile Menu Toggle -->
+                    <button id="mobileMenuBtn" class="flex md:hidden text-neutral-400 hover:text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Brand -->
+                    <div class="text-white font-black tracking-widest text-sm uppercase">
+                        PLUG<span class="text-blue-500">.</span>
+                    </div>
+
+                    <!-- Desktop Nav -->
+                    <div class="hidden md:grid grid-cols-4 gap-1.5 backdrop-blur-md  p-1 rounded-xl min-w-[320px]">
+                        <a href="index.html"
+                            class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-white bg-white/10 rounded-lg">Home</a>
+                            <a href="about.html"
+                                class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">About</a>
+                        <a href="product.html"
+                            class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Shop</a>
+                        <a href="contact.html"
+                            class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Support</a>
+                    </div>
+
+                    <!-- Search & Cart -->
+                    <div class="flex items-center gap-4 text-white">
+                        <div class="relative flex items-center">
+                            <button id="searchBtn" class="hover:text-neutral-400 focus:outline-none">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </button>
+                            <input id="searchInput" type="text" placeholder="Search jerseys..."
+                                class="hidden absolute right-0 top-10 w-48 bg-neutral-950 border border-neutral-800 text-[10px] text-white p-2 rounded-lg outline-none uppercase tracking-widest transition-all">
+                        </div>
+                        <button class="relative hover:text-neutral-400">
+<a href="cart.html" class="relative text-white hover:text-neutral-400 transition-colors duration-200">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+    </svg>
+    <span id="navCartCountBadge"
+        class="absolute -top-1.5 -right-1.5 bg-blue-600 text-white text-[8px] font-black w-3.5 h-3.5 rounded-full flex items-center justify-center">0</span>
+</a>
+                        </button>
+                    </div>
+                </nav>
+                   <div id="mobileNavMenu"
+                    class="hidden absolute top-24 left-0 w-full bg-neutral-900 border border-[#202226] rounded-2xl p-6 flex flex-col gap-4">
+                    <a href="index.html"
+                        class="text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">Home</a>
+                        <a href="about.html"
+                            class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">About</a>
+                    <a href="product.html"
+                        class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">Shop</a>
+                    <a href="contact.html"
+                        class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest pb-1">Support</a>
+                </div>
+            </header>
+
+            <!-- HERO SECTION -->
+            <section
+                class="relative h-[55vh] w-full rounded-2xl overflow-hidden bg-neutral-900 border border-[#202226]">
+                <!-- Background Image Layer -->
+                <div class="absolute inset-0 w-full h-full">
+                    <img src="https://res.cloudinary.com/dvcuxyh99/image/upload/f_auto,q_auto/v1783344780/pexels-photo-33276897_lgdamw.jpg"
+                        alt="Football Pitch Background" class="w-full h-full object-cover opacity-80 object-center">
+                    <!-- Dark Gradient Fade Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0B0C0E] via-black/25 to-black/40"></div>
+                </div>
+
+                <!-- Hero Content Box -->
+                <div class="relative z-10 h-full w-full flex flex-col items-center justify-center text-center px-6">
+                    <span class="text-[10px] font-bold tracking-[0.3em] text-[#646D7B] uppercase mb-3">Drop 01 // Plug
+                        Originals</span>
+                    <h1 class="text-3xl sm:text-5xl font-black uppercase tracking-tighter text-white mb-4 leading-none">
+                        Own The Pitch. Rule The Streets.
+                    </h1>
+                    <p class="text-[11px] font-medium text-neutral-100 max-w-sm tracking-wide uppercase mb-6">
+                        Premium retro and modern football kits tailored for streetwear style.
+                    </p>
+                    <a href="product.html"
+                        class="px-8 py-3  text-white text-[11px] font-bold uppercase tracking-widest transition-all active:scale-[0.98]. bg-white/10 backdrop-blur-md border rounded-xl border-white/20 hover:bg-white/20">
+                        Shop Collection
+                    </a>
+
+                </div>
+            </section>
+            
+<!-- INFINITE LIVE DROP TICKER -->
+<div class="w-full bg-[#111214] border-y border-[#202226] py-3.5 overflow-hidden select-none flex">
+    
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 25s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+    </style>
+
+    <!-- Added whitespace-nowrap here so text never stacks -->
+    <div class="animate-marquee gap-16 pr-16 text-[10px] font-black tracking-[0.25em] text-[#9AA3AE] uppercase whitespace-nowrap">
+        
+        <!-- FIRST SET -->
+        <span class="flex items-center gap-3"> Live Drop <span class="text-blue-500">•</span> 25/26/27 Kits Active</span>
+        <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Free Delivery Within Lagos On Orders Over 3 Jerseys</span>
+        <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Premium Player & Retro Jerseys In Stock</span>
+        <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Authentic Quality Guaranteed  <span class="text-blue-500">•</span> Secure Checkout</span>
+        
+        <!-- DUPLICATE SET -->
+        <span class="flex items-center gap-3">Live Drop <span class="text-blue-500">•</span> 25/26/27 Kits Active</span>
+        <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Free Delivery Within Lagos On Orders Over 3 Jerseys</span>
+        <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Premium Player & Retro Jerseys In Stock</span>
+        <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Authentic Quality Guaranteed <span class="text-blue-500">•</span> Secure Checkout</span>
+
+    </div>
+</div>
+
+            <!-- BROWSE COLLECTIONS CATEGORIES -->
+            <section class="w-full flex flex-col gap-4">
+                <!-- Section Header Line -->
+                <div class="flex items-center justify-between border-b border-[#202226] pb-3">
+                    <h2 class="text-xs font-bold uppercase tracking-[0.2em] text-white">Browse Collections</h2>
+                    <span class="text-[10px] font-bold text-[#646D7B] uppercase tracking-wider">Curated Drops</span>
+                </div>
+
+                <!-- 3-Column Image Grid -->
+                <div class="grid grid-cols- sm:grid-cols-3 gap-4">
+
+                    <!-- Category 1: Tops -->
+                    <div
+                        class="group relative h-60 rounded-xl overflow-hidden bg-neutral-900 border border-[#202226] cursor-pointer">
+                        <img src="https://i.pinimg.com/736x/94/6e/47/946e4723ccdc39c54df42b5331973f6a.jpg" alt="Tops"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 z-10">
+                            <h3 class="text-xs font-bold uppercase tracking-widest text-white">Jersey Tops</h3>
+                            <p class="text-[9px] font-medium text-[#646D7B] uppercase tracking-wider mt-0.5">Explore
+                                Category →</p>
+                        </div>
+                    </div>
+
+                    <!-- Category 2: RETRO -->
+                    <div
+                        class="group relative h-60 rounded-xl overflow-hidden bg-neutral-900 border border-[#202226] cursor-pointer">
+                        <img src="https://images.pexels.com/photos/28071777/pexels-photo-28071777.jpeg"
+                            alt="Retro Jerseys"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 z-10">
+                            <h3 class="text-xs font-bold uppercase tracking-widest text-white">Retro Jerseys</h3>
+                            <p class="text-[9px] font-medium text-[#646D7B] uppercase tracking-wider mt-0.5">Explore
+                                Category →</p>
+                        </div>
+                    </div>
+
+                    <!-- Category 3: Shorts -->
+                    <div
+                        class="group relative h-60 rounded-xl overflow-hidden bg-neutral-900 border border-[#202226] cursor-pointer">
+                        <img src="https://i.pinimg.com/1200x/b2/cd/e6/b2cde6f30bd49ee66d9bb7b81553a449.jpg" alt="Shorts"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 z-10">
+                            <h3 class="text-xs font-bold uppercase tracking-widest text-white">Shorts & Training Kits
+                            </h3>
+                            <p class="text-[9px] font-medium text-[#646D7B] uppercase tracking-wider mt-0.5">Explore
+                                Category →</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            
+
+            <!-- 1. THE LATEST DROPS CAROUSEL               -->
+            <section id="shop"
+                class="py-16 bg-neutral-950 text-white font-['Space_Grotesk'] sans-serif relative overflow-hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative group/carousel">
+
+                    <!-- Bold Streetwear Header -->
+                    <div class="flex justify-between items-baseline border-b border-neutral-900 pb-4 mb-8">
+                        <h2 class="text-3xl md:text-4xl font-black tracking-tighter uppercase text-neutral-100">
+                            Latest <span class="text-blue-500">Drops</span>
+                        </h2>
+                        <a href="product.html"
+                            class="text-xs font-bold uppercase tracking-widest text-neutral-400 hover:text-blue-400 transition-colors">
+                            Shop All
+                        </a>
+                    </div>
+
+                    <!-- Frosted Left Arrow Button -->
+                    <button id="carousel-prev" type="button"
+                        class="absolute left-6 top-[55%] -translate-y-1/2 z-30 flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-black/30 backdrop-blur-md text-white md:opacity-0 md:group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-blue-500 hover:border-blue-500 focus:outline-none shadow-2xl active:scale-95"
+                        aria-label="Previous drops">
+                        <svg class="w-5 h-5 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                        </svg>
+                    </button>
+
+                    <!-- Frosted Right Arrow Button -->
+                    <button id="carousel-next" type="button"
+                        class="absolute right-6 top-[55%] -translate-y-1/2 z-30 flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-black/30 backdrop-blur-md text-white md:opacity-0 md:group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-blue-500 hover:border-blue-500 focus:outline-none shadow-2xl active:scale-95"
+                        aria-label="Next drops">
+                        <svg class="w-5 h-5 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </button>
+
+                    <!-- Scrollable Carousel Wrapper -->
+                    <div id="carousel-container"
+                        class="flex gap-6 overflow-x-auto snap-h snap-mandatory scroll-smooth pb-6 select-none cursor-grab active:cursor-grabbing"
+                        style="scrollbar-width: none; -ms-overflow-style: none;">
+                        <!-- Hide scrollbar for Webkit browsers -->
+                        <style>
+                            #carousel-container::-webkit-scrollbar {
+                                display: none;
+                            }
+                        </style>
+
+                        <!-- CARD 1 -->
+                        <div
+                            class="snap-start shrink-0 w-[85%] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group relative aspect-[3/4] rounded-2xl overflow-hidden bg-neutral-900 shadow-2xl border border-neutral-900 hover:border-neutral-800 transition-all duration-300">
+                            <img src="https://res.cloudinary.com/dvcuxyh99/image/upload/f_auto,q_auto/v1782149586/MANCHESTER-UNITED_nvdcwo.jpg"
+                                alt="man utd"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                loading="lazy" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/20 z-10">
+                            </div>
+                            <span
+                                class="absolute top-4 left-4 z-20 bg-blue-500 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md shadow-md">Plug
+                                Exclusive</span>
+                            <div class="absolute inset-x-0 bottom-0 p-5 z-20 flex flex-col justify-end">
+                                <div class="mb-3">
+                                    <h3
+                                        class="text-sm font-black uppercase tracking-tight text-white line-clamp-1 group-hover:text-blue-400 transition-colors duration-200">
+                                        Manchester United Jersey</h3>
+                                    <p class="text-xs font-bold text-neutral-400 mt-0.5">₦30.00</p>
+                                </div>
+                                <div class="mb-4">
+                                    <div
+                                        class="grid grid-cols-4 gap-1 rounded-md bg-black/15 backdrop-blur-md p-1 border border-white/10">
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all">S</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all">M</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all">L</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all">XL</button>
+                                    </div>
+                                </div>
+                                <a href="product.html" class="w-full">
+                                    <button type="button"
+                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore Drop</button>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- CARD 2 -->
+                        <div
+                            class="snap-start shrink-0 w-[85%] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group relative aspect-[3/4] rounded-2xl overflow-hidden bg-neutral-900 shadow-2xl border border-neutral-900 hover:border-neutral-800 transition-all duration-300">
+                            <img src=" https://res.cloudinary.com/dvcuxyh99/image/upload/f_auto,q_auto/v1782149583/Chelsea-Away-Jersey-25-26-Season.jpg_cogcyf.webp"
+                                alt="Chelsea Jersey"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                loading="lazy" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/20 z-10">
+                            </div>
+                            <span
+                                class="absolute top-4 left-4 z-20 bg-blue-500 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md shadow-md">Plug
+                                Exclusive</span>
+                            <div class="absolute inset-x-0 bottom-0 p-5 z-20 flex flex-col justify-end">
+                                <div class="mb-3">
+                                    <h3
+                                        class="text-sm font-black uppercase tracking-tight text-white line-clamp-1 group-hover:text-blue-400 transition-colors duration-200">
+                                        Chelsea Jersey</h3>
+                                    <p class="text-xs font-bold text-neutral-400 mt-0.5">₦39.00</p>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="grid grid-cols-4 gap-1">
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">S</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">M</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">L</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">XL</button>
+                                    </div>
+                                </div>
+                                  <a href="product.html" class="w-full">
+                                    <button type="button"
+                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore Drop</button>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- CARD 3 -->
+                        <div
+                            class="snap-start shrink-0 w-[85%] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group relative aspect-[3/4] rounded-2xl overflow-hidden bg-neutral-900 shadow-2xl border border-neutral-900 hover:border-neutral-800 transition-all duration-300">
+                            <img src="https://res.cloudinary.com/dvcuxyh99/image/upload/f_auto,q_auto/v1782149584/Real-Madrid_a01wyc.jpg"
+                                alt="LA Dodgers Rose"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                loading="lazy" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/20 z-10">
+                            </div>
+                            <span
+                                class="absolute top-4 left-4 z-20 bg-blue-500 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md shadow-md">Plug
+                                Exclusive</span>
+                            <div class="absolute inset-x-0 bottom-0 p-5 z-20 flex flex-col justify-end">
+                                <div class="mb-3">
+                                    <h3
+                                        class="text-sm font-black uppercase tracking-tight text-white line-clamp-1 group-hover:text-blue-400 transition-colors duration-200">
+                                        LA Dodgers 'Rose Emblem'</h3>
+                                    <p class="text-xs font-bold text-neutral-400 mt-0.5">₦39.99</p>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="grid grid-cols-4 gap-1">
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">S</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">M</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">L</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">XL</button>
+                                    </div>
+                                </div>
+                                 <a href="product.html" class="w-full">
+                                    <button type="button"
+                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore Drop</button>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- CARD 4 -->
+                        <div
+                            class="snap-start shrink-0 w-[85%] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group relative aspect-[3/4] rounded-2xl overflow-hidden bg-neutral-900 shadow-2xl border border-neutral-900 hover:border-neutral-800 transition-all duration-300">
+                            <img src=" https://res.cloudinary.com/dvcuxyh99/image/upload/f_auto,q_auto/v1782149584/FC-Barcelona_it9w9b.jpg"
+                                alt="NY Yankees Rose"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                loading="lazy" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/20 z-10">
+                            </div>
+                            <span
+                                class="absolute top-4 left-4 z-20 bg-blue-500 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md shadow-md">Plug
+                                Exclusive</span>
+                            <div class="absolute inset-x-0 bottom-0 p-5 z-20 flex flex-col justify-end">
+                                <div class="mb-3">
+                                    <h3
+                                        class="text-sm font-black uppercase tracking-tight text-white line-clamp-1 group-hover:text-blue-400 transition-colors duration-200">
+                                        NY Yankees 'Rose Emblem'</h3>
+                                    <p class="text-xs font-bold text-neutral-400 mt-0.5">₦39.99</p>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="grid grid-cols-4 gap-1">
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">S</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">M</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">L</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">XL</button>
+                                    </div>
+                                </div>
+          <a href="product.html" class="w-full">
+                                    <button type="button"
+                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore Drop</button>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- CARD 5 -->
+                        <div
+                            class="snap-start shrink-0 w-[85%] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group relative aspect-[3/4] rounded-2xl overflow-hidden bg-neutral-900 shadow-2xl border border-neutral-900 hover:border-neutral-800 transition-all duration-300">
+                            <img src=" https://res.cloudinary.com/dvcuxyh99/image/upload/f_auto,q_auto/v1782149585/man-city_pzfxi2.jpg"
+                                alt="Retro Jersey"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                loading="lazy" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/20 z-10">
+                            </div>
+                            <span
+                                class="absolute top-4 left-4 z-20 bg-blue-500 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md shadow-md">Rare
+                                Drop</span>
+                            <div class="absolute inset-x-0 bottom-0 p-5 z-20 flex flex-col justify-end">
+                                <div class="mb-3">
+                                    <h3
+                                        class="text-sm font-black uppercase tracking-tight text-white line-clamp-1 group-hover:text-blue-400 transition-colors duration-200">
+                                        Retro 1998 Heritage Jersey</h3>
+                                    <p class="text-xs font-bold text-neutral-400 mt-0.5">₦85.00</p>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="grid grid-cols-4 gap-1">
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">S</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">M</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">L</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">XL</button>
+                                    </div>
+                                </div>
+                                  <a href="product.html" class="w-full">
+                                    <button type="button"
+                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore Drop</button>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- CARD 6 -->
+                        <div
+                            class="snap-start shrink-0 w-[85%] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group relative aspect-[3/4] rounded-2xl overflow-hidden bg-neutral-900 shadow-2xl border border-neutral-900 hover:border-neutral-800 transition-all duration-300">
+                            <img src="https://res.cloudinary.com/dvcuxyh99/image/upload/f_auto,q_auto/v1782149586/Nottingham-Forest-Away-Jersey_sdexim.jpg"
+                                alt="Pitch Jacket"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                loading="lazy" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/20 z-10">
+                            </div>
+                            <span
+                                class="absolute top-4 left-4 z-20 bg-blue-500 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md shadow-md">Limited</span>
+                            <div class="absolute inset-x-0 bottom-0 p-5 z-20 flex flex-col justify-end">
+                                <div class="mb-3">
+                                    <h3
+                                        class="text-sm font-black uppercase tracking-tight text-white line-clamp-1 group-hover:text-blue-400 transition-colors duration-200">
+                                        Saturdays Pitch Jacket</h3>
+                                    <p class="text-xs font-bold text-neutral-400 mt-0.5">₦120.00</p>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="grid grid-cols-4 gap-1">
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">S</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">M</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">L</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">XL</button>
+                                    </div>
+                                </div>
+                                  <a href="product.html" class="w-full">
+                                    <button type="button"
+                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore Drop</button>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- CARD 7 -->
+                        <div
+                            class="snap-start shrink-0 w-[85%] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group relative aspect-[3/4] rounded-2xl overflow-hidden bg-neutral-900 shadow-2xl border border-neutral-900 hover:border-neutral-800 transition-all duration-300">
+                            <img src=" https://res.cloudinary.com/dvcuxyh99/image/upload/f_auto,q_auto/v1782153038/psg_mv91wo.jpg"
+                                alt="Premium Hoodie"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                loading="lazy" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/20 z-10">
+                            </div>
+                            <span
+                                class="absolute top-4 left-4 z-20 bg-blue-500 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md shadow-md">New
+                                Drop</span>
+                            <div class="absolute inset-x-0 bottom-0 p-5 z-20 flex flex-col justify-end">
+                                <div class="mb-3">
+                                    <h3
+                                        class="text-sm font-black uppercase tracking-tight text-white line-clamp-1 group-hover:text-blue-400 transition-colors duration-200">
+                                        Cyberpunk Oversized Hoodie</h3>
+                                    <p class="text-xs font-bold text-neutral-400 mt-0.5">₦75.00</p>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="grid grid-cols-4 gap-1">
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">S</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">M</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">L</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">XL</button>
+                                    </div>
+                                </div>
+                                 <a href="product.html" class="w-full">
+                                    <button type="button"
+                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore Drop</button>
+                                </a> 
+                            </div>
+                        </div>
+
+                        <!-- CARD 8 -->
+                        <div
+                            class="snap-start shrink-0 w-[85%] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group relative aspect-[3/4] rounded-2xl overflow-hidden bg-neutral-900 shadow-2xl border border-neutral-900 hover:border-neutral-800 transition-all duration-300">
+                            <img src=" https://res.cloudinary.com/dvcuxyh99/image/upload/f_auto,q_auto/v1782153036/napoli_f3bmc0.jpg"
+                                alt="Premium Tee"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                loading="lazy" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/20 z-10">
+                            </div>
+                            <span
+                                class="absolute top-4 left-4 z-20 bg-blue-500 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md shadow-md">Essentials</span>
+                            <div class="absolute inset-x-0 bottom-0 p-5 z-20 flex flex-col justify-end">
+                                <div class="mb-3">
+                                    <h3
+                                        class="text-sm font-black uppercase tracking-tight text-white line-clamp-1 group-hover:text-blue-400 transition-colors duration-200">
+                                        Heavyweight Mineral Wash Tee</h3>
+                                    <p class="text-xs font-bold text-neutral-400 mt-0.5">₦45.00</p>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="grid grid-cols-4 gap-1">
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">S</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">M</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">L</button>
+                                        <button type="button"
+                                            class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">XL</button>
+                                    </div>
+                                </div>
+                                  <a href="product.html" class="w-full">
+                                    <button type="button"
+                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore Drop</button>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!--  -->
+            <section id="features" class="py-12  bg-black text-white font-['Space_Grotesk'] sans-serif ">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+
+                        <!-- Feature 1: Curated Authenticity -->
+                        <div class="flex flex-col items-center md:items-start p-4 transition-all duration-300">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 mb-4 border border-blue-500/20">
+                                <!-- Shield / Check Icon -->
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-sm font-black uppercase tracking-wider text-neutral-100">
+                                Curated Authenticity
+                            </h3>
+                            <p class="mt-2 text-xs text-neutral-400 leading-relaxed max-w-sm">
+                                Guaranteed elite quality drops. Every piece in our vault undergoes a rigorous curation
+                                process to verify styling, stitching, and absolute premium build.
+                            </p>
+                        </div>
+
+                        <!-- Feature 2: Direct VIP Concierge -->
+                        <div class="flex flex-col items-center md:items-start p-4 transition-all duration-300">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 mb-4 border border-blue-500/20">
+                                <!-- Chat / Support Icon -->
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-sm font-black uppercase tracking-wider text-neutral-100">
+                                Direct VIP Concierge
+                            </h3>
+                            <p class="mt-2 text-xs text-neutral-400 leading-relaxed max-w-sm">
+                                No automated bots, no detached tracking links. Your bag is processed instantly via
+                                premium
+                                1-on-1 WhatsApp chat directly with our specialists.
+                            </p>
+                        </div>
+
+                        <!-- Feature 3: Fast Delivery & Sizing Support -->
+                        <div class="flex flex-col items-center md:items-start p-4 transition-all duration-300">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 mb-4 border border-blue-500/20">
+                                <!-- Lightning / Delivery Icon -->
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-sm font-black uppercase tracking-wider text-neutral-100">
+                                Priority Sizing & Tracking
+                            </h3>
+                            <p class="mt-2 text-xs text-neutral-400 leading-relaxed max-w-sm">
+                                Get real-time tracking updates and layout fit support. Our crew guides your order
+                                through
+                                the pipeline to ensure a flawless pickup or drop-off experience.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+    </div>
+<!-- PREMIUM FAQ SECTION -->
+<section class="w-full bg-[#0B0C0E] py-24 px-4 md:px-8 border-t border-[#111214]">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+        
+        <!-- Left Column: Headers -->
+        <div class="lg:col-span-1 flex flex-col justify-between">
+            <div>
+                <span class="text-[11px] font-black tracking-[0.2em] text-blue-500 uppercase">Information Hub</span>
+                <h2 class="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mt-3 leading-none">
+                    Common <br class="hidden lg:block">Questions
+                </h2>
+            </div>
+            <p class="text-[#6C737F] text-xs font-medium max-w-sm mt-6 lg:mt-0 leading-relaxed">
+                Can't find what you are looking for? Reach out to our support team directly via the contact portal for immediate assistance.
+            </p>
+        </div>
+
+        <!-- Right Column: Minimalist Accordion Grid -->
+        <div class="lg:col-span-2 divide-y divide-[#111214]">
+            
+            <!-- Item 1 -->
+            <div class="faq-item py-6 first:pt-0 group cursor-pointer">
+                <div class="flex justify-between items-center gap-4" onclick="toggleFaq(this)">
+                    <h3 class="text-sm font-bold text-[#E2E5E9] uppercase tracking-wide transition-colors group-hover:text-blue-200">
+                        Are these jerseys player version or fan version?
+                    </h3>
+                    <span class="faq-icon text-[#6C737F] text-lg font-light transition-transform duration-300 group-hover:text-blue-200">+</span>
+                </div>
+                <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                    <p class="text-xs text-[#9AA3AE] pt-4 leading-relaxed max-w-2xl">
+                        We source both. Player version jerseys feature a slim, athletic cut with heat-pressed badges and advanced ventilation fabrics. Fan versions offer a slightly standard, relaxed fit with beautifully embroidered club crests. The specific version is always noted in the item details.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="faq-item py-6 group cursor-pointer">
+                <div class="flex justify-between items-center gap-4" onclick="toggleFaq(this)">
+                    <h3 class="text-sm font-bold text-[#E2E5E9] uppercase tracking-wide transition-colors group-hover:text-blue-200">
+                        How long does delivery take within Lagos?
+                    </h3>
+                    <span class="faq-icon text-[#6C737F] text-lg font-light transition-transform duration-300 group-hover:text-blue-200">+</span>
+                </div>
+                <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                    <p class="text-xs text-[#9AA3AE] pt-4 leading-relaxed max-w-2xl">
+                        Orders within Lagos (Island and Mainland) typically deliver within 24 to 48 hours. For standard nationwide shipping outside Lagos, please allow 3 to 5 business days for your package to arrive.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="faq-item py-6 group cursor-pointer">
+                <div class="flex justify-between items-center gap-4" onclick="toggleFaq(this)">
+                    <h3 class="text-sm font-bold text-[#E2E5E9] uppercase tracking-wide transition-colors group-hover:text-blue-200">
+                        Can I customize a jersey with my own name and number?
+                    </h3>
+                    <span class="faq-icon text-[#6C737F] text-lg font-light transition-transform duration-300 group-hover:text-blue-200">+</span>
+                </div>
+                <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                    <p class="text-xs text-[#9AA3AE] pt-4 leading-relaxed max-w-2xl">
+                        Yes. Custom nameplates and numbers use official club fonts and pairing graphics. To request personalization, select the custom option on the product page or drop your specific instructions in the checkout notes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="faq-item py-6 group cursor-pointer">
+                <div class="flex justify-between items-center gap-4" onclick="toggleFaq(this)">
+                    <h3 class="text-sm font-bold text-[#E2E5E9] uppercase tracking-wide transition-colors group-hover:text-blue-200">
+                        What is your return policy if a jersey doesn't fit?
+                    </h3>
+                    <span class="faq-icon text-[#6C737F] text-lg font-light transition-transform duration-300 group-hover:text-blue-200">+</span>
+                </div>
+                <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                    <p class="text-xs text-[#9AA3AE] pt-4 leading-relaxed max-w-2xl">
+                        We accept exchanges within 7 days of delivery, provided the tags are completely intact and the item is unworn. Please note that custom personalized jerseys (with custom names/numbers) cannot be returned or exchanged.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+    <!-- 3. THE FOOTER HUB                          -->
+    <footer id="footer"
+        class="bg-neutral-950 text-white font-['Space_Grotesk'] sans-serif border-t border-neutral-900 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-neutral-900">
+
+                <!-- Brand Profile -->
+                <div class="md:col-span-1 flex flex-col items-center md:items-start">
+                    <span class="text-xl font-black tracking-widest uppercase text-white mb-4">
+                        PLUG<span class="text-blue-500">.</span>
+                    </span>
+                    <p class="text-xs text-neutral-400 leading-relaxed text-center md:text-left max-w-xs">
+                        Your direct portal to premium curated streetwear, retro heritage jerseys, and exclusive matchday
+                        lifestyle drops. Own the pitch. Rule the streets.
+                    </p>
+                </div>
+
+                <!-- Quick Nav Links -->
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="text-xs font-black uppercase tracking-widest text-neutral-300 mb-4">The Shop</h4>
+                    <ul class="space-y-2 text-center md:text-left">
+                        <li><a href="#shop-all"
+                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Latest Drops</a>
+                        </li>
+                        <li><a href="#tops"
+                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Jersey Tops
+                            </a></li>
+                        <li><a href="#retro"
+                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Retro Kits</a>
+                        </li>
+                        <li><a href="#training"
+                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Training
+                                Kits</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support / Assistance Links -->
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="text-xs font-black uppercase tracking-widest text-neutral-300 mb-4">Assistance</h4>
+                    <ul class="space-y-2 text-center md:text-left">
+                        <li><a href="#concierge"
+                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">1-on-1 VIP
+                                Chat</a></li>
+                        <li><a href="size-guide.html"
+                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Sizing Guide</a>
+                        </li>
+                        <li><a href="#orders"
+                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Order
+                                Tracking</a></li>
+                        <li><a href="#faq" class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">FAQ 
+                            </a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Join -->
+                <div class="flex flex-col">
+                    <h4 class="text-xs font-black uppercase tracking-widest text-neutral-400 mb-3">drop alerts</h4>
+                    <p class="text-[11px] text-neutral-500 uppercase tracking-wider mb-4">get notified before public
+                        release.</p>
+                    <form
+                        class="w-full relative flex items-center border-b border-neutral-800 focus-within:border-blue-500 transition-colors pb-2">
+                        <input type="email" placeholder="ENTER EMAIL"
+                            class="w-full bg-transparent text-xs font-bold text-neutral-100 focus:outline-none placeholder-neutral-700 uppercase tracking-widest"
+                            required />
+                        <button type="submit"
+                            class="text-neutral-400 hover:text-blue-500 text-xs font-black uppercase tracking-widest transition-colors pl-2">
+                            JOIN
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Copyright / Bottom Meta -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center">
+                <p class="text-[10px] font-bold tracking-wider text-neutral-500 uppercase">
+                    &copy; <span id="copyright-year"></span> PLUG STOREHOUSE. ALL RIGHTS VAULTED.
+                </p>
+                <div class="flex gap-6">
+                    <a href="privacy.html"
+                        class="text-[10px] font-bold tracking-wider text-neutral-500 hover:text-neutral-300 uppercase transition-colors">Privacy
+                        Policy</a>
+                    <a href="terms.html"
+                        class="text-[10px] font-bold tracking-wider text-neutral-500 hover:text-neutral-300 uppercase transition-colors">Terms
+                        of Release</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- SIMPLE JAVASCRIPT SYSTEM -->
+    <script>
+        // 1. MOBILE MENU TOGGLE LOGIC
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNavMenu = document.getElementById('mobileNavMenu');
+
+        if (mobileMenuBtn && mobileNavMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                // If it contains the 'hidden' class, remove it to show it. Otherwise, add it back to hide it.
+                mobileNavMenu.classList.toggle('hidden');
+            });
+        }
+
+
+
+
+
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('carousel-container');
+            const prevBtn = document.getElementById('carousel-prev');
+            const nextBtn = document.getElementById('carousel-next');
+
+            if (!container || !prevBtn || !nextBtn) return;
+
+            const getScrollAmount = () => {
+                // Dynamic shift spacing based on responsive breakpoints
+                if (window.innerWidth >= 1024) return container.offsetWidth / 2; // Move 2 cards on desktop
+                return container.offsetWidth * 0.85; // Move 1 card on mobile/tablet
+            };
+
+            nextBtn.addEventListener('click', () => {
+                container.scrollLeft += getScrollAmount();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                container.scrollLeft -= getScrollAmount();
+            });
+
+            // Optional: Elegant Drag-to-Scroll Functionality
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            container.addEventListener('mousedown', (e) => {
+                isDown = true;
+                container.classList.add('active');
+                startX = e.pageX - container.offsetLeft;
+                scrollLeft = container.scrollLeft;
+            });
+            container.addEventListener('mouseleave', () => {
+                isDown = false;
+            });
+            container.addEventListener('mouseup', () => {
+                isDown = false;
+            });
+            container.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - container.offsetLeft;
+                const walk = (x - startX) * 2; // Scroll-fast
+                container.scrollLeft = scrollLeft - walk;
+            });
+        });
+
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+        const searchBtn = document.getElementById('searchBtn');
+        const searchInput = document.getElementById('searchInput');
+        searchBtn.addEventListener('click', () => {
+            searchInput.classList.toggle('hidden');
+            if (!searchInput.classList.contains('hidden')) searchInput.focus();
+        });
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && searchInput.value.trim()) {
+                window.location.href = `product.html?search=${encodeURIComponent(searchInput.value.trim())}`;
+            }
+        });
+
+
+    </script>
+   
+<script>
+function toggleFaq(element) {
+    const content = element.nextElementSibling;
+    const icon = element.querySelector('.faq-icon');
+    
+    // Toggle active state
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        content.style.maxHeight = '0px';
+        icon.style.transform = 'rotate(0deg)';
+        icon.textContent = '+';
+    } else {
+        // Close all other open items first to keep it clean
+        document.querySelectorAll('.faq-content').forEach(el => el.style.maxHeight = '0px');
+        document.querySelectorAll('.faq-icon').forEach(el => {
+            el.style.transform = 'rotate(0deg)';
+            el.textContent = '+';
+        });
+        
+        // Open current item
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.style.transform = 'rotate(45deg)';
+        icon.textContent = '×';
+    }
+}
+</script>
+    <!-- cursor ring animation -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>

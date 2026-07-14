@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLUG. | Your Bag</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        #carousel-container {
+            scroll-snap-type: x mandatory;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        #cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+
+        #cursor-ring {
+            width: 36px;
+            height: 36px;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.10s ease, width 0.3s ease, height 0.3s ease, background 0.8s ease;
+        }
+
+        #cursor-ring.hovering {
+            width: 60px;
+            height: 60px;
+            background: rgba(59, 130, 246, 0.1);
+            border-color: #3b82f6;
+        }
+    </style>
+</head>
+
+<body class="bg-[#0B0C0E] text-white antialiased min-h-screen flex flex-col justify-between">
+
+    <div class="max-w-7xl mx-auto w-full flex flex-col gap-8 flex-1">
+
+        <!-- NAV -->
+        <header class="w-full pt-6 relative z-50 sticky top-0">
+            <nav class="w-full h-16 bg-neutral-900 border border-[#202226] rounded-full px-6 md:px-8 flex items-center justify-between">
+                <button id="mobileMenuBtn" class="flex md:hidden text-neutral-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <div class="text-white font-black tracking-widest text-sm uppercase">PLUG<span class="text-blue-500">.</span></div>
+                <div class="hidden md:grid grid-cols-4 gap-1.5 backdrop-blur-md p-1 min-w-[320px]">
+                    <a href="index.html" class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-[#9AA3AE] hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Home</a>
+                    <a href="about.html" class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">About</a>
+                    <a href="product.html" class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Shop</a>
+                    <a href="contact.html" class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Support</a>
+                </div>
+                <div class="flex items-center gap-4 text-white">
+                    <button class="hover:text-neutral-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                    <a href="cart.html" class="relative hover:text-neutral-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                        <span id="navCartCountBadge" class="absolute -top-1.5 -right-1.5 bg-blue-600 text-white text-[8px] font-black w-3.5 h-3.5 rounded-full flex items-center justify-center">0</span>
+                    </a>
+                </div>
+            </nav>
+            <div id="mobileNavMenu" class="hidden absolute top-24 left-0 w-full bg-neutral-900 border border-[#202226] rounded-2xl p-6 flex flex-col gap-4">
+                <a href="index.html" class="text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">Home</a>
+                <a href="about.html" class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">About</a>
+                <a href="product.html" class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">Shop</a>
+                <a href="contact.html" class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest pb-1">Support</a>
+            </div>
+        </header>
+
+        <!-- Breadcrumb -->
+        <div class="px-4 py-1">
+            <nav class="font-sans text-[8px] uppercase tracking-[0.3em] text-gray-500">
+                <a href="index.html" class="hover:text-blue-500 transition">Home</a>
+                <span class="mx-2 text-zinc-700">/</span>
+                <span class="text-zinc-300">Your Bag</span>
+            </nav>
+        </div>
+
+        <!-- MAIN -->
+        <main class="w-full px-4 py-4 flex-1">
+            <div class="mb-8 border-b border-[#202226] pb-4 flex items-end justify-between">
+                <h1 class="text-2xl font-black uppercase tracking-tight">Your Bag</h1>
+                <button onclick="clearEntireCart()" id="clearCartBtn" class="text-[10px] font-black uppercase tracking-widest text-neutral-500 hover:text-red-500 transition-colors duration-200 hidden">
+                    Clear Bag
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
+                <!-- Cart Items -->
+                <div id="cartItemsContainer" class="lg:col-span-8 divide-y divide-neutral-900"></div>
+
+                <!-- Order Summary -->
+                <div class="lg:col-span-4 bg-neutral-900/40 border border-[#202226] p-6 rounded-xl space-y-6">
+                    <h3 class="text-xs font-black uppercase tracking-widest text-neutral-300">Order Summary</h3>
+                    <div class="space-y-3 text-xs font-bold uppercase tracking-wider">
+                        <div class="flex justify-between text-neutral-500">
+                            <span>Subtotal</span>
+                            <span class="text-white" id="summarySubtotal">₦0.00</span>
+                        </div>
+                        <div class="flex justify-between text-neutral-500">
+                            <span>Delivery</span>
+                            <span class="text-[10px] text-neutral-400">Calculated at checkout</span>
+                        </div>
+                    </div>
+                    <div class="border-t border-neutral-900 pt-4 flex justify-between text-sm font-black uppercase tracking-wide">
+                        <span>Estimated Total</span>
+                        <span class="text-blue-500" id="summaryTotal">₦0.00</span>
+                    </div>
+                    <button id="whatsappCheckoutBtn" onclick="checkoutViaWhatsApp()" class="w-full h-[46px] bg-[#25D366] hover:bg-[#1ebe5b] text-black font-black uppercase tracking-widest text-[11px] rounded-lg transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.001 2C6.478 2 2 6.477 2 12c0 1.898.526 3.674 1.44 5.187L2 22l4.94-1.396A9.945 9.945 0 0012 22c5.523 0 10-4.477 10-10S17.524 2 12.001 2zm0 18.09c-1.6 0-3.11-.443-4.395-1.213l-.315-.187-3.264.923.94-3.183-.205-.327A7.99 7.99 0 014 12c0-4.418 3.582-8 8.001-8C16.419 4 20 7.582 20 12s-3.581 8.09-7.999 8.09z"/></svg>
+                        Order via WhatsApp
+                    </button>
+                    <a href="product.html" class="block text-center text-[10px] font-black uppercase tracking-widest text-neutral-500 hover:text-white transition-colors pt-1">
+                        ← Continue Sourcing
+                    </a>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-neutral-950 text-white font-['Space_Grotesk'] border-t border-neutral-900 pt-16 pb-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-neutral-900">
+                <div class="md:col-span-1 flex flex-col items-center md:items-start">
+                    <span class="text-xl font-black tracking-widest uppercase text-white mb-4">PLUG<span class="text-blue-500">.</span></span>
+                    <p class="text-xs text-neutral-400 leading-relaxed text-center md:text-left max-w-xs">Your direct portal to premium curated streetwear, retro heritage jerseys, and exclusive matchday lifestyle drops.</p>
+                </div>
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="text-xs font-black uppercase tracking-widest text-neutral-300 mb-4">The Shop</h4>
+                    <ul class="space-y-2 text-center md:text-left">
+                        <li><a href="#" class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Latest Drops</a></li>
+                        <li><a href="#" class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Jersey Tops</a></li>
+                        <li><a href="#" class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Retro Kits</a></li>
+                        <li><a href="#" class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Training Kits</a></li>
+                    </ul>
+                </div>
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="text-xs font-black uppercase tracking-widest text-neutral-300 mb-4">Assistance</h4>
+                    <ul class="space-y-2 text-center md:text-left">
+                        <li><a href="#" class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">1-on-1 VIP Chat</a></li>
+                        <li><a href="#" class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Sizing Guide</a></li>
+                        <li><a href="#" class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Order Tracking</a></li>
+                        <li><a href="#" class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="flex flex-col">
+                    <h4 class="text-xs font-black uppercase tracking-widest text-neutral-400 mb-3">drop alerts</h4>
+                    <p class="text-[11px] text-neutral-500 uppercase tracking-wider mb-4">get notified before public release.</p>
+                    <form class="w-full relative flex items-center border-b border-neutral-800 focus-within:border-blue-500 transition-colors pb-2">
+                        <input type="email" placeholder="ENTER EMAIL" class="w-full bg-transparent text-xs font-bold text-neutral-100 focus:outline-none placeholder-neutral-700 uppercase tracking-widest" required />
+                        <button type="submit" class="text-neutral-400 hover:text-blue-500 text-xs font-black uppercase tracking-widest transition-colors pl-2">JOIN</button>
+                    </form>
+                </div>
+            </div>
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center">
+                <p class="text-[10px] font-bold tracking-wider text-neutral-500 uppercase">&copy; <span id="copyright-year"></span> PLUG STOREHOUSE. ALL RIGHTS VAULTED.</p>
+                <div class="flex gap-6">
+                    <a href="privacy.html" class="text-[10px] font-bold tracking-wider text-neutral-500 hover:text-neutral-300 uppercase transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="text-[10px] font-bold tracking-wider text-neutral-500 hover:text-neutral-300 uppercase transition-colors">Terms of Release</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ── STATE ─────────────────────────────────────────────────
+        let cart = JSON.parse(localStorage.getItem('plug_cart')) || [];
+
+       
+        const WHATSAPP_NUMBER = "2349077104995";
+
+        function checkoutViaWhatsApp() {
+            if (cart.length === 0) {
+                alert("Your bag is empty — add something before checking out.");
+                return;
+            }
+
+            let subtotal = 0;
+            const lines = cart.map(item => {
+                const lineTotal = parseFloat(item.price) * item.quantity;
+                subtotal += lineTotal;
+                return `• ${item.quantity}x ${item.name} — Size ${item.size} — ₦${lineTotal.toFixed(2)}`;
+            });
+
+            const message =
+                `Hi PLUGONJERSEYS! I'd like to place an order:\n\n` +
+                lines.join('\n') +
+                `\n\nEstimated Total: ₦${subtotal.toFixed(2)}\n\n` +
+                `(Delivery cost to be confirmed)`;
+
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        // ── RENDER ────────────────────────────────────────────────
+        function renderCartPage() {
+            const container = document.getElementById('cartItemsContainer');
+            const subtotalEl = document.getElementById('summarySubtotal');
+            const totalEl = document.getElementById('summaryTotal');
+            const navCountBadge = document.getElementById('navCartCountBadge');
+            const clearBtn = document.getElementById('clearCartBtn');
+
+            if (!container) return;
+            container.innerHTML = '';
+
+            let subtotal = 0;
+            let totalItems = 0;
+
+            if (cart.length === 0) {
+                if (clearBtn) clearBtn.classList.add('hidden');
+                container.innerHTML = `
+                    <div class="py-20 text-left">
+                        <p class="text-xs font-bold uppercase tracking-widest text-neutral-500">Your shopping bag is completely empty.</p>
+                        <a href="product.html" class="inline-block mt-4 text-[10px] font-black uppercase tracking-widest text-blue-500 hover:underline">Go add items →</a>
+                    </div>`;
+                if (subtotalEl) subtotalEl.textContent = '₦0.00';
+                if (totalEl) totalEl.textContent = '₦0.00';
+                if (navCountBadge) navCountBadge.textContent = '0';
+                return;
+            }
+
+            if (clearBtn) clearBtn.classList.remove('hidden');
+
+            cart.forEach((item, index) => {
+                const itemCost = parseFloat(item.price) * item.quantity;
+                subtotal += itemCost;
+                totalItems += item.quantity;
+
+                const imageMarkup = (item.image && item.image !== '')
+                    ? `<img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover rounded">`
+                    : `<span class="text-[9px] font-black tracking-tighter text-neutral-700 uppercase">KIT</span>`;
+
+                const itemRow = document.createElement('div');
+                itemRow.className = "flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 py-6 first:pt-0";
+                itemRow.innerHTML = `
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-20 bg-neutral-900 rounded border border-[#202226] flex-shrink-0 relative flex items-center justify-center overflow-hidden">
+                            ${imageMarkup}
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-black uppercase tracking-wide text-white">${item.name}</h3>
+                            <p class="text-[10px] text-neutral-500 font-bold uppercase tracking-widest mt-1">Size: ${item.size}</p>
+                            <div class="flex items-center gap-1 mt-2 bg-neutral-900 border border-[#202226] rounded-md p-0.5 w-max">
+                                <button onclick="updateQuantity(${index}, -1)" class="w-6 h-6 flex items-center justify-center text-xs text-neutral-400 hover:text-white hover:bg-white/5 rounded transition-colors cursor-pointer select-none font-bold">-</button>
+                                <span class="text-[10px] font-black text-white w-6 text-center select-none uppercase tracking-wider">${item.quantity}</span>
+                                <button onclick="updateQuantity(${index}, 1)" class="w-6 h-6 flex items-center justify-center text-xs text-neutral-400 hover:text-white hover:bg-white/5 rounded transition-colors cursor-pointer select-none font-bold">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex sm:flex-col justify-between sm:items-end w-full sm:w-auto border-t sm:border-0 border-neutral-900 pt-4 sm:pt-0">
+                        <span class="text-xs font-black text-white">₦${itemCost.toFixed(2)}</span>
+                        <button onclick="removeCartItem(${index})" class="text-[10px] font-black uppercase tracking-widest text-neutral-500 hover:text-red-500 transition-colors mt-1">Remove</button>
+                    </div>
+                `;
+                container.appendChild(itemRow);
+            });
+
+            if (subtotalEl) subtotalEl.textContent = `₦${subtotal.toFixed(2)}`;
+            if (totalEl) totalEl.textContent = `₦${subtotal.toFixed(2)}`;
+            if (navCountBadge) navCountBadge.textContent = totalItems;
+        }
+
+        // ── ACTIONS ───────────────────────────────────────────────
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity < 1) {
+                removeCartItem(index);
+                return;
+            }
+            localStorage.setItem('plug_cart', JSON.stringify(cart));
+            renderCartPage();
+        }
+
+        function removeCartItem(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('plug_cart', JSON.stringify(cart));
+            renderCartPage();
+        }
+
+        function clearEntireCart() {
+            if (confirm("Are you sure you want to empty your shopping bag?")) {
+                cart = [];
+                localStorage.setItem('plug_cart', JSON.stringify(cart));
+                renderCartPage();
+            }
+        }
+
+        // ── INIT ──────────────────────────────────────────────────
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNavMenu = document.getElementById('mobileNavMenu');
+        if (mobileMenuBtn && mobileNavMenu) {
+            mobileMenuBtn.addEventListener('click', () => mobileNavMenu.classList.toggle('hidden'));
+        }
+
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+        document.addEventListener('DOMContentLoaded', renderCartPage);
+    </script>
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+    <script src="script.js"></script>
+</body>
+</html>

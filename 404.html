@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLUG. | Premium Football Streetwear</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        #carousel-container {
+            scroll-snap-type: x mandatory;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+
+<body class="bg-[#0B0C0E] text-white antialiased">
+
+    <!-- SITE CONTAINER (Keeps Navbar, Hero, and Products perfectly aligned in the center) -->
+    <div class="max-w-7xl mx-auto flex flex-col gap-8">
+
+        <!-- FLOATING NAVIGATION BAR -->
+        <header class="w-full pt-6 relative z-50 sticky top-0 ">
+            <nav
+                class="w-full h-16 bg-neutral-900 border border-[#202226] rounded-full px-6 md:px-8 flex items-center justify-between">
+
+                <button id="mobileMenuBtn" class="flex md:hidden text-neutral-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
+                <div class="text-white font-black tracking-widest text-sm uppercase">
+                    PLUG<span class="text-blue-500">.</span>
+                </div>
+
+                <div class="hidden md:grid grid-cols-4 gap-1.5   backdrop-blur-md p-1  min-w-[320px]">
+                    <a href="index.html"
+                        class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-white bg-white/10 hover:bg-white/20 rounded-lg transition-colors duration-200">
+                        Home
+                    </a>
+                    <a href="shop.html"
+                        class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">
+                        Shop
+                    </a>
+                    <a href="#about"
+                        class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">
+                        About
+                    </a>
+                    <a href="#support"
+                        class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">
+                        Support
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-4 text-white">
+                    <button class="hover:text-neutral-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                    <button class="relative hover:text-neutral-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                        <span
+                            class="absolute -top-1.5 -right-1.5 bg-blue-600 text-white text-[8px] font-black w-3.5 h-3.5 rounded-full flex items-center justify-center">1</span>
+                    </button>
+                </div>
+            </nav>
+
+            <div id="mobileNavMenu"
+                class="hidden absolute top-24 left-0 w-full bg-neutral-900 border border-[#202226] rounded-2xl p-6 flex flex-col gap-4">
+                <a href="#"
+                    class="text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">Home</a>
+                <a href="#shop"
+                    class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">Shop</a>
+                <a href="#about"
+                    class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">About</a>
+                <a href="#support"
+                    class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest pb-1">Support</a>
+            </div>
+        </header>
+
+
+        <!-- Breadcrumb Navigation -->
+        <div class="px-4 sm:px-6 lg:px-8 py-3">
+            <nav class="font-sans text-[8px] uppercase tracking-[0.3em] text-gray-500">
+                <a href="index.html" class="hover:text-blue-500 transition">Home</a>
+                <span class="mx-2 text-zinc-700">/</span>
+                <span class="text-zinc-300">Shop</span>
+            </nav>
+        </div>
+
+        <main>
+            <div
+                class="min-h-screen bg-neutral-950 text-white flex flex-col items-center justify-center font-['Space_Grotesk']">
+                <h1 class="text-6xl font-black text-neutral-800 mb-4">404</h1>
+                <p class="text-xs uppercase tracking-[0.3em] text-neutral-500 mb-8">Vault access denied - path not found
+                </p>
+                <a href="index.html"
+                    class="px-6 py-3 border border-white/10 hover:bg-white hover:text-black transition text-[10px] font-bold uppercase tracking-widest">
+                    Return to Plug
+                </a>
+            </div>
+        </main>
+        <footer id="footer"
+            class="bg-neutral-950 text-white font-['Space_Grotesk'] sans-serif border-t border-neutral-900 pt-16 pb-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-neutral-900">
+
+                    <!-- Brand Profile -->
+                    <div class="md:col-span-1 flex flex-col items-center md:items-start">
+                        <span class="text-xl font-black tracking-widest uppercase text-white mb-4">
+                            PLUG<span class="text-blue-500">.</span>
+                        </span>
+                        <p class="text-xs text-neutral-400 leading-relaxed text-center md:text-left max-w-xs">
+                            Your direct portal to premium curated streetwear, retro heritage jerseys, and exclusive
+                            matchday
+                            lifestyle drops. Own the pitch. Rule the streets.
+                        </p>
+                    </div>
+
+                    <!-- Quick Nav Links -->
+                    <div class="flex flex-col items-center md:items-start">
+                        <h4 class="text-xs font-black uppercase tracking-widest text-neutral-300 mb-4">The Shop</h4>
+                        <ul class="space-y-2 text-center md:text-left">
+                            <li><a href="#shop-all"
+                                    class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Latest
+                                    Drops</a>
+                            </li>
+                            <li><a href="#tops"
+                                    class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Jersey Tops
+                                </a></li>
+                            <li><a href="#retro"
+                                    class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Retro
+                                    Kits</a>
+                            </li>
+                            <li><a href="#training"
+                                    class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Training
+                                    Kits</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Support / Assistance Links -->
+                    <div class="flex flex-col items-center md:items-start">
+                        <h4 class="text-xs font-black uppercase tracking-widest text-neutral-300 mb-4">Assistance</h4>
+                        <ul class="space-y-2 text-center md:text-left">
+                            <li><a href="#concierge"
+                                    class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">1-on-1 VIP
+                                    Chat</a></li>
+                            <li><a href="#sizing"
+                                    class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Sizing
+                                    Guide</a>
+                            </li>
+                            <li><a href="#orders"
+                                    class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Order
+                                    Tracking</a></li>
+                            <li><a href="#faq"
+                                    class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">FAQ /
+                                </a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter Join -->
+                    <div class="flex flex-col">
+                        <h4 class="text-xs font-black uppercase tracking-widest text-neutral-400 mb-3">drop alerts</h4>
+                        <p class="text-[11px] text-neutral-500 uppercase tracking-wider mb-4">get notified before public
+                            release.</p>
+                        <form
+                            class="w-full relative flex items-center border-b border-neutral-800 focus-within:border-blue-500 transition-colors pb-2">
+                            <input type="email" placeholder="ENTER EMAIL"
+                                class="w-full bg-transparent text-xs font-bold text-neutral-100 focus:outline-none placeholder-neutral-700 uppercase tracking-widest"
+                                required />
+                            <button type="submit"
+                                class="text-neutral-400 hover:text-blue-500 text-xs font-black uppercase tracking-widest transition-colors pl-2">
+                                JOIN
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+
+                <!-- Copyright / Bottom Meta -->
+                <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center">
+                    <p class="text-[10px] font-bold tracking-wider text-neutral-500 uppercase">
+                        &copy; <span id="copyright-year"></span> PLUG STOREHOUSE. ALL RIGHTS VAULTED.
+                    </p>
+                    <div class="flex gap-6">
+                        <a href="privacy.html"
+                            class="text-[10px] font-bold tracking-wider text-neutral-500 hover:text-neutral-300 uppercase transition-colors">Privacy
+                            Policy</a>
+                        <a href="terms.html"
+                            class="text-[10px] font-bold tracking-wider text-neutral-500 hover:text-neutral-300 uppercase transition-colors">Terms
+                            of Release</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- SIMPLE JAVASCRIPT SYSTEM -->
+        <script>
+            // 1. MOBILE MENU TOGGLE LOGIC
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileNavMenu = document.getElementById('mobileNavMenu');
+
+            if (mobileMenuBtn && mobileNavMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    // If it contains the 'hidden' class, remove it to show it. Otherwise, add it back to hide it.
+                    mobileNavMenu.classList.toggle('hidden');
+                });
+            }
+
+
+
+
+
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const container = document.getElementById('carousel-container');
+                const prevBtn = document.getElementById('carousel-prev');
+                const nextBtn = document.getElementById('carousel-next');
+
+                if (!container || !prevBtn || !nextBtn) return;
+
+                const getScrollAmount = () => {
+                    // Dynamic shift spacing based on responsive breakpoints
+                    if (window.innerWidth >= 1024) return container.offsetWidth / 2; // Move 2 cards on desktop
+                    return container.offsetWidth * 0.85; // Move 1 card on mobile/tablet
+                };
+
+                nextBtn.addEventListener('click', () => {
+                    container.scrollLeft += getScrollAmount();
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    container.scrollLeft -= getScrollAmount();
+                });
+
+                // Optional: Elegant Drag-to-Scroll Functionality
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+
+                container.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    container.classList.add('active');
+                    startX = e.pageX - container.offsetLeft;
+                    scrollLeft = container.scrollLeft;
+                });
+                container.addEventListener('mouseleave', () => {
+                    isDown = false;
+                });
+                container.addEventListener('mouseup', () => {
+                    isDown = false;
+                });
+                container.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - container.offsetLeft;
+                    const walk = (x - startX) * 2; // Scroll-fast
+                    container.scrollLeft = scrollLeft - walk;
+                });
+            });
+
+            document.getElementById('copyright-year').textContent = new Date().getFullYear();
+        </script>
+</body>

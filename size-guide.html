@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLUG. | Premium Football Streetwear</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        #carousel-container {
+            scroll-snap-type: x mandatory;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        #cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+
+        #cursor-ring {
+            width: 36px;
+            height: 36px;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.10s ease, width 0.3s ease, height 0.3s ease, background 0.8s ease;
+        }
+
+        #cursor-ring.hovering {
+            width: 60px;
+            height: 60px;
+            background: rgba(59, 130, 246, 0.1);
+            border-color: #3b82f6;
+        }
+    </style>
+
+</head>
+
+<body class="bg-[#0B0C0E] text-white antialiased min-h-screen flex flex-col justify-between">
+
+    <div class="max-w-7xl mx-auto flex flex-col gap-8">
+
+        <header class="w-full pt-6 relative z-50 sticky top-0">
+            <nav
+                class="w-full h-16 bg-neutral-900 border border-[#202226] rounded-full px-6 md:px-8 flex items-center justify-between">
+                <!-- Mobile Menu Toggle -->
+                <button id="mobileMenuBtn" class="flex md:hidden text-neutral-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
+                <!-- Brand -->
+                <div class="text-white font-black tracking-widest text-sm uppercase">
+                    PLUG<span class="text-blue-500">.</span>
+                </div>
+
+                <!-- Desktop Nav -->
+                <div class="hidden md:grid grid-cols-4 gap-1.5 backdrop-blur-md  p-1 rounded-xl min-w-[320px]">
+                    <a href="index.html"
+                        class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-white bg-white/10 rounded-lg transition-colors">Home</a>
+                    <a href="about.html"
+                        class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">About</a>
+                    <a href="product.html"
+                        class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Shop</a>
+                    <a href="contact.html"
+                        class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Support</a>
+                </div>
+
+                <!-- Search & Cart -->
+                <div class="flex items-center gap-4 text-white">
+                    <div class="relative flex items-center">
+                        <button id="searchBtn" class="hover:text-neutral-400 focus:outline-none">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </button>
+                        <input id="searchInput" type="text" placeholder="Search jerseys..."
+                            class="hidden absolute right-0 top-10 w-48 bg-neutral-950 border border-neutral-800 text-[10px] text-white p-2 rounded-lg outline-none uppercase tracking-widest transition-all">
+                    </div>
+                    <button class="relative hover:text-neutral-400">
+           <a href="cart.html" class="relative text-white hover:text-neutral-400 transition-colors duration-200">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+    </svg>
+    <span id="navCartCountBadge"
+        class="absolute -top-1.5 -right-1.5 bg-blue-600 text-white text-[8px] font-black w-3.5 h-3.5 rounded-full flex items-center justify-center">0</span>
+</a>
+                    </button>
+                </div>
+            </nav>
+               <div id="mobileNavMenu"
+                    class="hidden absolute top-24 left-0 w-full bg-neutral-900 border border-[#202226] rounded-2xl p-6 flex flex-col gap-4">
+                    <a href="index.html"
+                        class="text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">Home</a>
+                        <a href="about.html"
+                            class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">About</a>
+                    <a href="shop.html"
+                        class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">Shop</a>
+                    <a href="#support"
+                        class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest pb-1">Support</a>
+                </div>
+        </header>
+        <!-- BREADCRUMB -->
+        <div class="px-4 sm:px-6 lg:px-8 py-3">
+            <nav class="font-sans text-[8px] uppercase tracking-[0.3em] text-gray-500">
+                <a href="index.html" class="hover:text-blue-500 transition">Home</a>
+                <span class="mx-2 text-zinc-700">/</span>
+                <span class="text-zinc-300">Size Guide</span>
+            </nav>
+        </div>
+
+<!-- Page Title Header -->
+        <div class="mb-16 border-b border-[#111214] pb-8">
+            <span class="text-[10px] font-black tracking-[0.3em] text-blue-500 uppercase block mb-3">Fit Specifications</span>
+            <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tight leading-none">Sizing Guide</h1>
+            <p class="text-[#6C737F] text-xs font-medium mt-4 max-w-xl leading-relaxed">
+                Football kits are engineered to different technical specifications. Use the metrics below to ensure your selected kit aligns with your preferred fit profile.
+            </p>
+        </div>
+
+        <!-- Structural Split: Fan vs Player Version -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            
+            <!-- COLUMN 1: FAN VERSION METRICS -->
+            <div class="space-y-8">
+                <div class="flex items-center justify-between border-b border-[#202226] pb-4">
+                    <h2 class="text-lg font-black uppercase tracking-wide">Fan Version</h2>
+                    <span class="text-[10px] font-bold uppercase px-3 py-1 bg-[#111214] text-[#9AA3AE] rounded border border-[#202226]">Standard Fit</span>
+                </div>
+                <p class="text-xs text-[#9AA3AE] leading-relaxed">
+                    Designed for everyday comfort. These jerseys feature woven crests and a more generous, traditional cut. **We recommend ordering your standard t-shirt size.**
+                </p>
+
+                <!-- Clean Technical Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-[#111214] text-[10px] font-black uppercase tracking-widest text-[#6C737F]">
+                                <th class="pb-4">Size</th>
+                                <th class="pb-4">Chest (Inches)</th>
+                                <th class="pb-4">Length (Inches)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-xs font-bold divide-y divide-[#111214] text-[#E2E5E9]">
+                            <tr>
+                                <td class="py-4">S</td>
+                                <td class="py-4 text-[#9AA3AE]">36 - 38</td>
+                                <td class="py-4 text-[#9AA3AE]">27.5</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4">M</td>
+                                <td class="py-4 text-[#9AA3AE]">39 - 41</td>
+                                <td class="py-4 text-[#9AA3AE]">28.5</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4">L</td>
+                                <td class="py-4 text-[#9AA3AE]">42 - 44</td>
+                                <td class="py-4 text-[#9AA3AE]">29.5</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4">XL</td>
+                                <td class="py-4 text-[#9AA3AE]">45 - 47</td>
+                                <td class="py-4 text-[#9AA3AE]">30.5</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4">2XL</td>
+                                <td class="py-4 text-[#9AA3AE]">48 - 50</td>
+                                <td class="py-4 text-[#9AA3AE]">31.5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- COLUMN 2: PLAYER VERSION METRICS -->
+            <div class="space-y-8">
+                <div class="flex items-center justify-between border-b border-[#202226] pb-4">
+                    <h2 class="text-lg font-black uppercase tracking-wide">Player Version</h2>
+                    <span class="text-[10px] font-bold uppercase px-3 py-1 bg-blue-950/40 text-blue-400 rounded border border-blue-500/20">Athletic Slim</span>
+                </div>
+                <p class="text-xs text-[#9AA3AE] leading-relaxed">
+                    Identical to what athletes wear on the pitch. Features lightweight heat-pressed badges and slim, performance-molded contours. **We highly recommend sizing up by one full size** unless you prefer a very tight fit.
+                </p>
+
+                <!-- Clean Technical Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-[#111214] text-[10px] font-black uppercase tracking-widest text-[#6C737F]">
+                                <th class="pb-4">Size</th>
+                                <th class="pb-4">Chest (Inches)</th>
+                                <th class="pb-4">Length (Inches)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-xs font-bold divide-y divide-[#111214] text-[#E2E5E9]">
+                            <tr>
+                                <td class="py-4">S</td>
+                                <td class="py-4 text-[#9AA3AE]">34 - 36</td>
+                                <td class="py-4 text-[#9AA3AE]">26.8</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4">M</td>
+                                <td class="py-4 text-[#9AA3AE]">37 - 39</td>
+                                <td class="py-4 text-[#9AA3AE]">27.8</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4">L</td>
+                                <td class="py-4 text-[#9AA3AE]">40 - 42</td>
+                                <td class="py-4 text-[#9AA3AE]">28.8</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4">XL</td>
+                                <td class="py-4 text-[#9AA3AE]">43 - 45</td>
+                                <td class="py-4 text-[#9AA3AE]">29.8</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4">2XL</td>
+                                <td class="py-4 text-[#9AA3AE]">46 - 48</td>
+                                <td class="py-4 text-[#9AA3AE]">30.8</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Note Section Below Layout -->
+        <div class="mt-16 mb-16 bg-[#111214] border border-[#202226] p-6 rounded-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div class="max-w-2xl">
+                <h4 class="text-xs font-black uppercase tracking-wide text-white mb-1">Still Unsure About Fitting?</h4>
+                <p class="text-[11px] text-[#9AA3AE] leading-relaxed">
+                    If you are situated between two size bands or need specific counsel on structural measurements, please contact our support portal before finalizing custom nameplates.
+                </p>
+            </div>
+            <a href="contact.html" class="h-[40px] px-6 border border-[#202226] text-[#9AA3AE] hover:text-white hover:border-blue-500 font-black uppercase tracking-widest text-[10px] transition-all flex items-center justify-center whitespace-nowrap rounded">
+                Contact Support
+            </a>
+        </div>
+    </div>
+
+    </div>
+    <footer id="footer"
+        class="bg-neutral-950 text-white font-['Space_Grotesk'] sans-serif border-t border-neutral-900 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-neutral-900">
+
+                <!-- Brand Profile -->
+                <div class="md:col-span-1 flex flex-col items-center md:items-start">
+                    <span class="text-xl font-black tracking-widest uppercase text-white mb-4">
+                        PLUG<span class="text-blue-500">.</span>
+                    </span>
+                    <p class="text-xs text-neutral-400 leading-relaxed text-center md:text-left max-w-xs">
+                        Your direct portal to premium curated streetwear, retro heritage jerseys, and exclusive
+                        matchday lifestyle drops. Own the pitch. Rule the streets.
+                    </p>
+                </div>
+
+                <!-- Quick Nav Links -->
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="text-xs font-black uppercase tracking-widest text-neutral-300 mb-4">The Shop</h4>
+                    <ul class="space-y-2 text-center md:text-left">
+                        <li><a href="#shop-all"
+                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Latest
+                                Drops</a></li>
+                        <li><a href="#tops"
+                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Jersey
+                                Tops</a></li>
+                        <li><a href="#retro"
+                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Retro
+                                Kits</a></li>
+                        <li><a href="#training"
+                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Training
+                                Kits</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support / Assistance Links -->
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="text-xs font-black uppercase tracking-widest text-neutral-300 mb-4">Assistance
+                    </h4>
+                    <ul class="space-y-2 text-center md:text-left">
+                        <li><a href="#concierge"
+                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">1-on-1
+                                VIP Chat</a></li>
+                        <li><a href="#sizing"
+                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Size
+                                Guide</a></li>
+                        <li><a href="#orders"
+                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Connect
+                                to us on WhatsApp</a></li>
+                        <li><a href="#faq"
+                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Join -->
+                <div class="flex flex-col">
+                    <h4 class="text-xs font-black uppercase tracking-widest text-neutral-400 mb-3">drop alerts
+                    </h4>
+                    <p class="text-[11px] text-neutral-500 uppercase tracking-wider mb-4">get notified before
+                        public release.</p>
+                    <form
+                        class="w-full relative flex items-center border-b border-neutral-800 focus-within:border-blue-500 transition-colors pb-2">
+                        <input type="email" placeholder="ENTER EMAIL"
+                            class="w-full bg-transparent text-xs font-bold text-neutral-100 focus:outline-none placeholder-neutral-700 uppercase tracking-widest"
+                            required />
+                        <button type="submit"
+                            class="text-neutral-400 hover:text-blue-500 text-xs font-black uppercase tracking-widest transition-colors pl-2">JOIN</button>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Copyright / Bottom Meta -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center">
+                <p class="text-[10px] font-bold tracking-wider text-neutral-500 uppercase">
+                    &copy; <span id="copyright-year"></span> PLUG STOREHOUSE. ALL RIGHTS VAULTED.
+                </p>
+                <div class="flex gap-6">
+                    <a href="privacy.html"
+                        class="text-[10px] font-bold tracking-wider text-neutral-500 hover:text-neutral-300 uppercase transition-colors">Privacy
+                        Policy</a>
+                    <a href="terms.html"
+                        class="text-[10px] font-bold tracking-wider text-neutral-500 hover:text-neutral-300 uppercase transition-colors">Terms
+                        of Release</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SIMPLE JAVASCRIPT SYSTEM -->
+    <script>
+        // 1. MOBILE MENU TOGGLE LOGIC
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNavMenu = document.getElementById('mobileNavMenu');
+
+        if (mobileMenuBtn && mobileNavMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                // If it contains the 'hidden' class, remove it to show it. Otherwise, add it back to hide it.
+                mobileNavMenu.classList.toggle('hidden');
+            });
+        }
+
+
+
+
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('carousel-container');
+            const prevBtn = document.getElementById('carousel-prev');
+            const nextBtn = document.getElementById('carousel-next');
+
+            if (!container || !prevBtn || !nextBtn) return;
+
+            const getScrollAmount = () => {
+                // Dynamic shift spacing based on responsive breakpoints
+                if (window.innerWidth >= 1024) return container.offsetWidth / 2; 
+                return container.offsetWidth * 0.85; // Move 1 card on mobile/tablet
+            };
+
+            nextBtn.addEventListener('click', () => {
+                container.scrollLeft += getScrollAmount();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                container.scrollLeft -= getScrollAmount();
+            });
+
+            // Optional: Elegant Drag-to-Scroll Functionality
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            container.addEventListener('mousedown', (e) => {
+                isDown = true;
+                container.classList.add('active');
+                startX = e.pageX - container.offsetLeft;
+                scrollLeft = container.scrollLeft;
+            });
+            container.addEventListener('mouseleave', () => {
+                isDown = false;
+            });
+            container.addEventListener('mouseup', () => {
+                isDown = false;
+            });
+            container.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - container.offsetLeft;
+                const walk = (x - startX) * 2; // Scroll-fast
+                container.scrollLeft = scrollLeft - walk;
+            });
+        });
+
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+        const searchBtn = document.getElementById('searchBtn');
+        const searchInput = document.getElementById('searchInput');
+        searchBtn.addEventListener('click', () => {
+            searchInput.classList.toggle('hidden');
+            if (!searchInput.classList.contains('hidden')) searchInput.focus();
+        });
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && searchInput.value.trim()) {
+                window.location.href = `product.html?search=${encodeURIComponent(searchInput.value.trim())}`;
+            }
+        });
+
+
+
+
+
+        function toggleFaq(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('.faq-icon');
+
+            // Toggle active state
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                content.style.maxHeight = '0px';
+                icon.style.transform = 'rotate(0deg)';
+                icon.textContent = '+';
+            } else {
+                // Close all other open items first to keep it clean
+                document.querySelectorAll('.faq-content').forEach(el => el.style.maxHeight = '0px');
+                document.querySelectorAll('.faq-icon').forEach(el => {
+                    el.style.transform = 'rotate(0deg)';
+                    el.textContent = '+';
+                });
+
+                // Open current item
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.style.transform = 'rotate(45deg)';
+                icon.textContent = '×';
+            }
+        }
+    </script>
+
+    <!-- cursor ring animation -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | PLUG.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(32px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-up {
+            animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        .delay-1 {
+            animation-delay: 0.15s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.5s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.7s;
+        }
+
+        .stat-line::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 1px;
+            background: #3b82f6;
+            transition: width 0.6s ease;
+            margin-top: 1.5rem;
+        }
+
+        .stat-line:hover::after {
+            width: 100%;
+        }
+
+        #cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+
+        #cursor-ring {
+            width: 36px;
+            height: 36px;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.10s ease, width 0.3s ease, height 0.3s ease, background 0.8s ease;
+        }
+
+        #cursor-ring.hovering {
+            width: 60px;
+            height: 60px;
+            background: rgba(59, 130, 246, 0.1);
+            border-color: #3b82f6;
+        }
+    </style>
+</head>
+
+<body class="bg-[#0B0C0E] text-white antialiased ">
+    <main class="w-full min-h-screen pb-16 px-4 md:px-8">
+
+
+        <div class="max-w-7xl mx-auto flex flex-col gap-8 ">
+
+            <!-- NAV -->
+            <header class="w-full pt-6 relative z-50 sticky top-0">
+                <nav
+                    class="w-full h-16 bg-neutral-900 border border-[#202226] rounded-full px-6 md:px-8 flex items-center justify-between">
+
+                    <button id="mobileMenuBtn" class="flex md:hidden text-neutral-400 hover:text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+
+                    <div class="text-white font-black tracking-widest text-sm uppercase">
+                        PLUG<span class="text-blue-500">.</span>
+                    </div>
+
+                    <div class="hidden md:grid grid-cols-4 gap-1.5 backdrop-blur-md p-1 min-w-[320px]">
+                        <a href="index.html"
+                            class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/20 rounded-lg transition-colors duration-200">Home</a>
+                            <a href="about.html"
+                                class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-white bg-white/10 hover:bg-white/5 rounded-lg transition-colors duration-200">About</a>
+                        <a href="product.html"
+                            class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Shop</a>
+                        <a href="contact.html"
+                            class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Support</a>
+                    </div>
+
+                    <div class="flex items-center gap-4 text-white">
+                        <button class="hover:text-neutral-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </button>
+                        <button class="relative hover:text-neutral-400">
+            <a href="cart.html" class="relative text-white hover:text-neutral-400 transition-colors duration-200">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+    </svg>
+    <span id="navCartCountBadge"
+        class="absolute -top-1.5 -right-1.5 bg-blue-600 text-white text-[8px] font-black w-3.5 h-3.5 rounded-full flex items-center justify-center">0</span>
+</a>
+                        </button>
+                    </div>
+                </nav>
+
+                <div id="mobileNavMenu"
+                    class="hidden absolute top-24 left-0 w-full bg-neutral-900 border border-[#202226] rounded-2xl p-6 flex flex-col gap-4">
+                    <a href="index.html"
+                        class="text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">Home</a>
+                        <a href="about.html"
+                            class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">About</a>
+                    <a href="shop.html"
+                        class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">Shop</a>
+                    <a href="contact.html"
+                        class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest pb-1">Support</a>
+                </div>
+            </header>
+
+            <!-- BREADCRUMB -->
+            <div class="px-4 sm:px-6 lg:px-8 py-3">
+                <nav class="font-sans text-[8px] uppercase tracking-[0.3em] text-gray-500">
+                    <a href="index.html" class="hover:text-blue-500 transition">Home</a>
+                    <span class="mx-2 text-zinc-700">/</span>
+                    <span class="text-zinc-300">About</span>
+                </nav>
+            </div>
+
+            <!-- HERO -->
+            <section class="relative max-w-7xl mx-auto px-6 md:px-8 pt-24 pb-20">
+                <div class="fade-up delay-1">
+                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#646D7B] mb-6">Est. 2026 — Lagos,
+                        Nigeria</p>
+                </div>
+                <h1
+                    class="fade-up delay-2 text-[clamp(3rem,9vw,8rem)] font-black uppercase leading-[0.9] tracking-tight text-white mb-8 max-w-5xl">
+                    Worn on<br><span class="text-blue-300">pitches.</span><br>Built for<br>the culture.
+                </h1>
+                <div class="fade-up delay-3 w-16 h-px bg-[#202226] mt-12 mb-10"></div>
+                <p
+                    class="fade-up delay-4 text-[#9AA3AE] text-base md:text-lg leading-relaxed max-w-xl uppercase tracking-wide">
+                    PLUG. is a curated archive of premium football kits — sourced, verified, and delivered to those who
+                    understand that a jersey is never just a jersey.
+                </p>
+            </section>
+
+            <div class="w-full h-px bg-[#202226]"></div>
+
+            <!-- STORY SECTION -->
+            <section class="max-w-7xl mx-auto px-6 md:px-8 py-28">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-start">
+
+                    <div>
+                        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#646D7B] mb-8">Our Story</p>
+                        <h2
+                            class="text-[clamp(2.5rem,5vw,4.5rem)] font-black uppercase leading-tight tracking-tight text-white">
+                            Every kit<br>has a<br><span class="text-blue-300">story.</span>
+                        </h2>
+                    </div>
+
+                    <div class="flex flex-col gap-6 pt-2 md:pt-16">
+                        <p class="text-[#9AA3AE] text-sm md:text-base leading-relaxed uppercase tracking-wide">
+                            It started with a Bayern Munich home shirt from 2001, found tucked in a secondhand market in
+                            Lagos. Clean stitching. Original badge. The kind of piece you don't walk past.
+                        </p>
+                        <p class="text-[#9AA3AE] text-sm md:text-base leading-relaxed uppercase tracking-wide">
+                            That single find became an obsession tracking down authentic match-worn and retro kits
+                            from Europe's greatest clubs. Not replicas. Not knock-offs. The real thing, for people who
+                            know the difference.
+                        </p>
+                        <p class="text-[#9AA3AE] text-sm md:text-base leading-relaxed uppercase tracking-wide">
+                            PLUG. was built on the belief that football history deserves to live on in wardrobes. Every piece we carry is hand checked, authenticated, and top notch quality.
+                        </p>
+                        <div class="mt-4">
+                            <a href="product.html"
+                                class="inline-block border-2 border-white text-white text-[11px] uppercase tracking-widest px-10 py-4 hover:bg-white hover:text-black transition-colors duration-300">
+                                Shop The Archive
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="w-full h-px bg-[#202226]"></div>
+
+            <!-- VAULT RULES -->
+            <section class="bg-neutral-900 py-20 px-6">
+                <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-xs font-black text-white mb-3 tracking-widest uppercase"> <span style="color: #3b82f6;">01</span> / The Vetting</h3>
+                        <p class="text-[11px] text-neutral-500 leading-relaxed uppercase tracking-wider">
+                            No fakes. No low quality stock. All pieces are carefully selected and authenticated.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-black text-white mb-3 tracking-widest uppercase"> <span style="color: #3b82f6;">02</span> / The Connection
+                        </h3>
+                        <p class="text-[11px] text-neutral-500 leading-relaxed uppercase tracking-wider">
+                            This isn't a checkout page it's a conversation. We deal directly with you to ensure the
+                            fit and the piece are exactly what you need.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-black text-white mb-3 tracking-widest uppercase"> <span style="color: #3b82f6;">03</span> / Direct Access</h3>
+                        <p class="text-[11px] text-neutral-500 leading-relaxed uppercase tracking-wider">
+                            No automated bots or mindless checkouts. When you interact with us, you are speaking
+                            directly to the team.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-black text-white mb-3 tracking-widest uppercase"> <span style="color: #3b82f6;">04</span> / Plug Standards
+                        </h3>
+                        <p class="text-[11px] text-neutral-500 leading-relaxed uppercase tracking-wider">
+                            If it's not in peak condition, it doesn't make the cut. We focus on archival quality and
+                            authentic heritage pieces.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STATS -->
+            <section class="border-t border-[#202226]">
+                <div class="max-w-7xl mx-auto px-6 md:px-8 py-20">
+                    <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#202226]" id="stats-grid">
+                        <div class="stat-line px-6 md:px-10 py-8 text-center">
+                            <p class="text-[clamp(2.5rem,5vw,4rem)] font-black text-white leading-none">
+                                <span class="count-up" data-target="200" data-suffix="+">0</span>
+                            </p>
+                            <p class="text-[10px] uppercase tracking-widest text-[#646D7B] mt-3">Kits Archived</p>
+                        </div>
+                        <div class="stat-line px-6 md:px-10 py-8 text-center">
+                            <p class="text-[clamp(2.5rem,5vw,4rem)] font-black text-white leading-none">
+                                <span class="count-up" data-target="14" data-suffix="">0</span>
+                            </p>
+                            <p class="text-[10px] uppercase tracking-widest text-[#646D7B] mt-3">Clubs Represented</p>
+                        </div>
+                        <div class="stat-line px-6 md:px-10 py-8 text-center">
+                            <p class="text-[clamp(2.5rem,5vw,4rem)] font-black text-white leading-none">
+                                <span class="count-up" data-target="100" data-suffix="%">0</span>
+                            </p>
+                            <p class="text-[10px] uppercase tracking-widest text-[#646D7B] mt-3">Authenticated</p>
+                        </div>
+                        <div class="stat-line px-6 md:px-10 py-8 text-center">
+                            <p class="text-[clamp(2.5rem,5vw,4rem)] font-black text-white leading-none">
+                                <span class="count-up" data-target="1" data-suffix="">0</span>
+                            </p>
+                            <p class="text-[10px] uppercase tracking-widest text-[#646D7B] mt-3">City. Lagos.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- MANIFESTO STRIP -->
+            <section class="border-t border-[#202226] bg-[#0d0e10]">
+                <div class="max-w-7xl mx-auto px-6 md:px-8 py-28 text-center">
+                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#646D7B] mb-8">The Standard</p>
+                    <blockquote
+                        class="text-[clamp(1.5rem,3.5vw,3rem)] font-black uppercase tracking-tight text-white leading-snug max-w-4xl mx-auto">
+                       "We don't sell ordinary jerseys. We sell premium quality pieces for true football culture."
+                    </blockquote>
+                    <div class="w-8 h-px bg-[#303336] mx-auto mt-10"></div>
+                     <div class="mt-6 text-[10px] font-black tracking-[0.25em] text-blue-500 uppercase relative z-10">
+                ESTABLISHED 2026 // OPERATING GLOBALLY
+            </div>
+                </div>
+                
+            </section>
+
+       
+
+
+        </div>
+    </main>
+
+         <footer id="footer"
+                class="bg-neutral-950 text-white font-['Space_Grotesk'] sans-serif border-t border-neutral-900 pt-16 pb-8">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-neutral-900">
+
+                        <!-- Brand Profile -->
+                        <div class="md:col-span-1 flex flex-col items-center md:items-start">
+                            <span class="text-xl font-black tracking-widest uppercase text-white mb-4">
+                                PLUG<span class="text-blue-500">.</span>
+                            </span>
+                            <p class="text-xs text-neutral-400 leading-relaxed text-center md:text-left max-w-xs">
+                                Your direct portal to premium curated streetwear, retro heritage jerseys, and exclusive
+                                matchday lifestyle drops. Own the pitch. Rule the streets.
+                            </p>
+                        </div>
+
+                        <!-- Quick Nav Links -->
+                        <div class="flex flex-col items-center md:items-start">
+                            <h4 class="text-xs font-black uppercase tracking-widest text-neutral-300 mb-4">The Shop</h4>
+                            <ul class="space-y-2 text-center md:text-left">
+                                <li><a href="#shop-all"
+                                        class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Latest
+                                        Drops</a></li>
+                                <li><a href="#tops"
+                                        class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Jersey
+                                        Tops</a></li>
+                                <li><a href="#retro"
+                                        class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Retro
+                                        Kits</a></li>
+                                <li><a href="#training"
+                                        class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Training
+                                        Kits</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Support / Assistance Links -->
+                        <div class="flex flex-col items-center md:items-start">
+                            <h4 class="text-xs font-black uppercase tracking-widest text-neutral-300 mb-4">Assistance
+                            </h4>
+                            <ul class="space-y-2 text-center md:text-left">
+                                <li><a href="#concierge"
+                                        class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">1-on-1
+                                        VIP Chat</a></li>
+                                <li><a href="#sizing"
+                                        class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Size
+                                        Guide</a></li>
+                                <li><a href="#orders"
+                                        class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Connect
+                                        to us on WhatsApp</a></li>
+                                <li><a href="#faq"
+                                        class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">FAQ</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Newsletter Join -->
+                        <div class="flex flex-col">
+                            <h4 class="text-xs font-black uppercase tracking-widest text-neutral-400 mb-3">drop alerts
+                            </h4>
+                            <p class="text-[11px] text-neutral-500 uppercase tracking-wider mb-4">get notified before
+                                public release.</p>
+                            <form
+                                class="w-full relative flex items-center border-b border-neutral-800 focus-within:border-blue-500 transition-colors pb-2">
+                                <input type="email" placeholder="ENTER EMAIL"
+                                    class="w-full bg-transparent text-xs font-bold text-neutral-100 focus:outline-none placeholder-neutral-700 uppercase tracking-widest"
+                                    required />
+                                <button type="submit"
+                                    class="text-neutral-400 hover:text-blue-500 text-xs font-black uppercase tracking-widest transition-colors pl-2">JOIN</button>
+                            </form>
+                        </div>
+
+                    </div>
+
+                    <!-- Copyright / Bottom Meta -->
+                    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center">
+                        <p class="text-[10px] font-bold tracking-wider text-neutral-500 uppercase">
+                            &copy; <span id="copyright-year"></span> PLUG STOREHOUSE. ALL RIGHTS VAULTED.
+                        </p>
+                        <div class="flex gap-6">
+                            <a href="privacy.html"
+                                class="text-[10px] font-bold tracking-wider text-neutral-500 hover:text-neutral-300 uppercase transition-colors">Privacy
+                                Policy</a>
+                            <a href="terms.html"
+                                class="text-[10px] font-bold tracking-wider text-neutral-500 hover:text-neutral-300 uppercase transition-colors">Terms
+                                of Release</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNavMenu = document.getElementById('mobileNavMenu');
+        if (mobileMenuBtn && mobileNavMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileNavMenu.classList.toggle('hidden');
+            });
+        }
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+        const counters = document.querySelectorAll('.count-up');
+
+        const runCounter = (el) => {
+            const target = +el.dataset.target;
+            const suffix = el.dataset.suffix || '';
+            const duration = 1800;
+            const start = performance.now();
+
+            const update = (now) => {
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / duration, 1);
+                // Ease out
+                const ease = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(ease * target);
+                el.textContent = current + suffix;
+                if (progress < 1) requestAnimationFrame(update);
+            };
+
+            requestAnimationFrame(update);
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    counters.forEach(counter => runCounter(counter));
+                    observer.disconnect(); 
+                }
+            });
+        }, { threshold: 0.3 });
+
+        observer.observe(document.getElementById('stats-grid'));
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+    </script>
+    <!-- cursor ring animation -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
