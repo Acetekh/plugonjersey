@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PLUG. | Premium Football Streetwear</title>
+    <title>PLUGONJERSEY. | Premium Football Streetwear</title>
+    <link rel="icon" href="./images/favicon.png" type="image/png">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -221,22 +222,30 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                         <div class="absolute bottom-4 left-4 z-10">
                             <h3 class="text-xs font-bold uppercase tracking-widest text-white">Jersey Tops</h3>
-                            <p class="text-[9px] font-medium text-[#646D7B] uppercase tracking-wider mt-0.5">Explore
-                                Category →</p>
+                            <a href="product.html">
+
+                                <p class="text-[9px] font-medium text-[#646D7B] uppercase tracking-wider mt-0.5">Explore
+                                    Category →</p>
+                                </a>
                         </div>
                     </div>
 
                     <!-- Category 2: RETRO -->
                     <div
                         class="group relative h-60 rounded-xl overflow-hidden bg-neutral-900 border border-[#202226] cursor-pointer">
+                      
+                
                         <img src="https://images.pexels.com/photos/28071777/pexels-photo-28071777.jpeg"
                             alt="Retro Jerseys"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                         <div class="absolute bottom-4 left-4 z-10">
                             <h3 class="text-xs font-bold uppercase tracking-widest text-white">Retro Jerseys</h3>
-                            <p class="text-[9px] font-medium text-[#646D7B] uppercase tracking-wider mt-0.5">Explore
-                                Category →</p>
+                            <a href="product.html">
+
+                                <p class="text-[9px] font-medium text-[#646D7B] uppercase tracking-wider mt-0.5">Explore
+                                    Category →</p>
+                                </a>
                         </div>
                     </div>
 
@@ -247,10 +256,13 @@
                             class="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                         <div class="absolute bottom-4 left-4 z-10">
-                            <h3 class="text-xs font-bold uppercase tracking-widest text-white">Shorts & Training Kits
+                            <h3 class="text-xs font-bold uppercase tracking-widest text-white">TrackSuit & Training Kits
                             </h3>
-                            <p class="text-[9px] font-medium text-[#646D7B] uppercase tracking-wider mt-0.5">Explore
-                                Category →</p>
+                         <a href="product.html">
+
+                                <p class="text-[9px] font-medium text-[#646D7B] uppercase tracking-wider mt-0.5">Explore
+                                    Category →</p>
+                                </a>
                         </div>
                     </div>
 
@@ -780,7 +792,7 @@
 
 
 
-    <!-- 3. THE FOOTER HUB                          -->
+  <!-- 3. THE FOOTER HUB                          -->
     <footer id="footer"
         class="bg-neutral-950 text-white font-['Space_Grotesk'] sans-serif border-t border-neutral-900 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -801,16 +813,16 @@
                 <div class="flex flex-col items-center md:items-start">
                     <h4 class="text-xs font-black uppercase tracking-widest text-neutral-300 mb-4">The Shop</h4>
                     <ul class="space-y-2 text-center md:text-left">
-                        <li><a href="#shop-all"
+                        <li><a href="product.html"
                                 class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Latest Drops</a>
                         </li>
-                        <li><a href="#tops"
+                        <li><a href="product.html"
                                 class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Jersey Tops
                             </a></li>
-                        <li><a href="#retro"
+                        <li><a href="product.html"
                                 class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Retro Kits</a>
                         </li>
-                        <li><a href="#training"
+                        <li><a href="product.html"
                                 class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Training
                                 Kits</a></li>
                     </ul>
@@ -820,15 +832,25 @@
                 <div class="flex flex-col items-center md:items-start">
                     <h4 class="text-xs font-black uppercase tracking-widest text-neutral-300 mb-4">Assistance</h4>
                     <ul class="space-y-2 text-center md:text-left">
-                        <li><a href="#concierge"
-                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">1-on-1 VIP
-                                Chat</a></li>
+                        <!-- 1-on-1 VIP Chat (Direct WhatsApp Link) -->
+                        <li>
+                            <a href="https://wa.me/2349077104995?text=Hey%20PLUGONJERSEYS%20%20I'd%20love%20to%20get%20started%20with%20a%201-on-1%20VIP%20sourcing%20session%20for%20some%20kits." 
+                               target="_blank" 
+                               class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">
+                               1-on-1 VIP Chat
+                            </a>
+                        </li>
                         <li><a href="size-guide.html"
                                 class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Sizing Guide</a>
                         </li>
-                        <li><a href="#orders"
-                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">Order
-                                Tracking</a></li>
+                        <!-- Order Tracking Trigger -->
+                        <li>
+                            <a href="javascript:void(0)" 
+                               onclick="toggleTrackingModal(true)" 
+                               class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">
+                               Order Tracking
+                            </a>
+                        </li>
                         <li><a href="#faq" class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">FAQ 
                             </a></li>
                     </ul>
@@ -869,6 +891,40 @@
             </div>
         </div>
     </footer>
+<!-- ORDER TRACKING MODAL -->
+<div id="trackingModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-[#111214] border border-[#202226] w-full max-w-md p-6 rounded-lg relative mx-4">
+        <!-- Close Button -->
+        <button onclick="toggleTrackingModal(false)" class="absolute top-4 right-4 text-[#9AA3AE] hover:text-white text-lg font-bold">&times;</button>
+        
+        <h3 class="text-sm font-black uppercase tracking-widest text-white mb-2">Track Your Package</h3>
+        <p class="text-[11px] text-[#646D7B] uppercase tracking-wide mb-4">Enter your tracking number or dispatch code below.</p>
+        
+        <!-- Input Field -->
+        <div class="flex gap-2 mb-6">
+            <input type="text" id="trackingInput" placeholder="e.g. PLUG-88239" class="bg-[#1c1d21] border border-[#202226] rounded px-3 py-2 text-xs text-white uppercase tracking-wider focus:outline-none focus:border-blue-500 flex-1">
+            <button onclick="checkTracking()" class="bg-blue-500 hover:bg-blue-600 text-white font-black uppercase tracking-widest text-[10px] px-4 rounded transition-colors">Search</button>
+        </div>
+
+        <!-- STREAMLINED TRACKING RESULT (Hidden by default) -->
+        <div id="trackingResult" class="hidden space-y-4 border-t border-[#202226] pt-4">
+            <div class="bg-[#1c1d21] border border-[#202226] rounded-md p-4">
+                <div class="flex justify-between items-center text-[10px] uppercase font-bold tracking-wider mb-2">
+                    <span class="text-[#646D7B]">Order ID:</span>
+                    <span class="text-white" id="displayTrackingCode">PLUGONJERSEYS</span>
+                </div>
+                <div class="flex justify-between items-center text-[10px] uppercase font-bold tracking-wider">
+                    <span class="text-[#646D7B]">Status:</span>
+                    <span class="text-blue-400 animate-pulse">Processing / Sourcing</span>
+                </div>
+                <p class="text-[10px] text-[#9AA3AE] uppercase leading-relaxed mt-3 border-t border-[#202226] pt-3">
+                    Your order is currently being processed and authenticated by our team. Once dispatched via our local courier network, you will receive a direct update with your driver's contact details.
+                </p>
+            </div>
+        </div>
+        
+    </div>
+</div>
 
 
     <!-- SIMPLE JAVASCRIPT SYSTEM -->
@@ -899,7 +955,7 @@
 
             const getScrollAmount = () => {
                 // Dynamic shift spacing based on responsive breakpoints
-                if (window.innerWidth >= 1024) return container.offsetWidth / 2; // Move 2 cards on desktop
+                if (window.innerWidth >= 1024) return container.offsetWidth / 2; 
                 return container.offsetWidth * 0.85; // Move 1 card on mobile/tablet
             };
 
@@ -977,6 +1033,7 @@ function toggleFaq(element) {
         icon.style.transform = 'rotate(45deg)';
         icon.textContent = '×';
     }
+    
 }
 </script>
     <!-- cursor ring animation -->
