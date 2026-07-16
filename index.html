@@ -59,9 +59,8 @@
             background: rgba(59, 130, 246, 0.1);
             border-color: #3b82f6;
         }
-        
     </style>
-    
+
 </head>
 
 <body class="bg-[#0B0C0E] text-white antialiased">
@@ -72,7 +71,7 @@
         <!-- SITE CONTAINER (Keeps Navbar, Hero, and Products perfectly aligned in the center) -->
         <div class="max-w-7xl mx-auto flex flex-col gap-8">
 
-           
+
             <header class="w-full pt-6 relative z-50 sticky top-0">
                 <nav
                     class="w-full h-16 bg-neutral-900 border border-[#202226] rounded-full px-6 md:px-8 flex items-center justify-between">
@@ -86,15 +85,15 @@
 
                     <!-- Brand -->
                     <div class="text-white font-black tracking-widest text-sm uppercase">
-                        PLUG<span class="text-blue-500">.</span>
+                        PLUGON<span class="text-blue-500">.</span>
                     </div>
 
                     <!-- Desktop Nav -->
                     <div class="hidden md:grid grid-cols-4 gap-1.5 backdrop-blur-md  p-1 rounded-xl min-w-[320px]">
                         <a href="index.html"
                             class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-white bg-white/10 rounded-lg">Home</a>
-                            <a href="about.html"
-                                class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">About</a>
+                        <a href="about.html"
+                            class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">About</a>
                         <a href="product.html"
                             class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Shop</a>
                         <a href="contact.html"
@@ -114,23 +113,24 @@
                                 class="hidden absolute right-0 top-10 w-48 bg-neutral-950 border border-neutral-800 text-[10px] text-white p-2 rounded-lg outline-none uppercase tracking-widest transition-all">
                         </div>
                         <button class="relative hover:text-neutral-400">
-<a href="cart.html" class="relative text-white hover:text-neutral-400 transition-colors duration-200">
-    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-    </svg>
-    <span id="navCartCountBadge"
-        class="absolute -top-1.5 -right-1.5 bg-blue-600 text-white text-[8px] font-black w-3.5 h-3.5 rounded-full flex items-center justify-center">0</span>
-</a>
+                            <a href="cart.html"
+                                class="relative text-white hover:text-neutral-400 transition-colors duration-200">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                                </svg>
+                                <span id="navCartCountBadge"
+                                    class="absolute -top-1.5 -right-1.5 bg-blue-600 text-white text-[8px] font-black w-3.5 h-3.5 rounded-full flex items-center justify-center">0</span>
+                            </a>
                         </button>
                     </div>
                 </nav>
-                   <div id="mobileNavMenu"
+                <div id="mobileNavMenu"
                     class="hidden absolute top-24 left-0 w-full bg-neutral-900 border border-[#202226] rounded-2xl p-6 flex flex-col gap-4">
                     <a href="index.html"
                         class="text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">Home</a>
-                        <a href="about.html"
-                            class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">About</a>
+                    <a href="about.html"
+                        class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">About</a>
                     <a href="product.html"
                         class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">Shop</a>
                     <a href="contact.html"
@@ -151,7 +151,7 @@
 
                 <!-- Hero Content Box -->
                 <div class="relative z-10 h-full w-full flex flex-col items-center justify-center text-center px-6">
-                    <span class="text-[10px] font-bold tracking-[0.3em] text-[#646D7B] uppercase mb-3">Drop 01 // Plug
+                    <span class="text-[10px] font-bold tracking-[0.3em] text-[#646D7B] uppercase mb-3">Drop 01 // Plugon
                         Originals</span>
                     <h1 class="text-3xl sm:text-5xl font-black uppercase tracking-tighter text-white mb-4 leading-none">
                         Own The Pitch. Rule The Streets.
@@ -166,42 +166,58 @@
 
                 </div>
             </section>
-            
-<!-- INFINITE LIVE DROP TICKER -->
-<div class="w-full bg-[#111214] border-y border-[#202226] py-3.5 overflow-hidden select-none flex">
-    
-    <style>
-        @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-            display: flex;
-            width: max-content;
-            animation: marquee 25s linear infinite;
-        }
-        .animate-marquee:hover {
-            animation-play-state: paused;
-        }
-    </style>
 
-    <!-- Added whitespace-nowrap here so text never stacks -->
-    <div class="animate-marquee gap-16 pr-16 text-[10px] font-black tracking-[0.25em] text-[#9AA3AE] uppercase whitespace-nowrap">
-        
-        <!-- FIRST SET -->
-        <span class="flex items-center gap-3"> Live Drop <span class="text-blue-500">•</span> 25/26/27 Kits Active</span>
-        <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Free Delivery Within Lagos On Orders Over 3 Jerseys</span>
-        <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Premium Player & Retro Jerseys In Stock</span>
-        <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Authentic Quality Guaranteed  <span class="text-blue-500">•</span> Secure Checkout</span>
-        
-        <!-- DUPLICATE SET -->
-        <span class="flex items-center gap-3">Live Drop <span class="text-blue-500">•</span> 25/26/27 Kits Active</span>
-        <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Free Delivery Within Lagos On Orders Over 3 Jerseys</span>
-        <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Premium Player & Retro Jerseys In Stock</span>
-        <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Authentic Quality Guaranteed <span class="text-blue-500">•</span> Secure Checkout</span>
+            <!-- INFINITE LIVE DROP TICKER -->
+            <div class="w-full bg-[#111214] border-y border-[#202226] py-3.5 overflow-hidden select-none flex">
 
-    </div>
-</div>
+                <style>
+                    @keyframes marquee {
+                        0% {
+                            transform: translateX(0%);
+                        }
+
+                        100% {
+                            transform: translateX(-50%);
+                        }
+                    }
+
+                    .animate-marquee {
+                        display: flex;
+                        width: max-content;
+                        animation: marquee 25s linear infinite;
+                    }
+
+                    .animate-marquee:hover {
+                        animation-play-state: paused;
+                    }
+                </style>
+
+                <!-- Added whitespace-nowrap here so text never stacks -->
+                <div
+                    class="animate-marquee gap-16 pr-16 text-[10px] font-black tracking-[0.25em] text-[#9AA3AE] uppercase whitespace-nowrap">
+
+                    <!-- FIRST SET -->
+                    <span class="flex items-center gap-3"> Live Drop <span class="text-blue-500">•</span> 25/26/27 Kits
+                        Active</span>
+                    <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Free Delivery Within
+                        Lagos On Orders Over 3 Jerseys</span>
+                    <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Premium Player & Retro
+                        Jerseys In Stock</span>
+                    <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Authentic Quality
+                        Guaranteed <span class="text-blue-500">•</span> Secure Checkout</span>
+
+                    <!-- DUPLICATE SET -->
+                    <span class="flex items-center gap-3">Live Drop <span class="text-blue-500">•</span> 25/26/27 Kits
+                        Active</span>
+                    <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Free Delivery Within
+                        Lagos On Orders Over 3 Jerseys</span>
+                    <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Premium Player & Retro
+                        Jerseys In Stock</span>
+                    <span class="flex items-center gap-3"> <span class="text-blue-500">•</span> Authentic Quality
+                        Guaranteed <span class="text-blue-500">•</span> Secure Checkout</span>
+
+                </div>
+            </div>
 
             <!-- BROWSE COLLECTIONS CATEGORIES -->
             <section class="w-full flex flex-col gap-4">
@@ -226,15 +242,15 @@
 
                                 <p class="text-[9px] font-medium text-[#646D7B] uppercase tracking-wider mt-0.5">Explore
                                     Category →</p>
-                                </a>
+                            </a>
                         </div>
                     </div>
 
                     <!-- Category 2: RETRO -->
                     <div
                         class="group relative h-60 rounded-xl overflow-hidden bg-neutral-900 border border-[#202226] cursor-pointer">
-                      
-                
+
+
                         <img src="https://images.pexels.com/photos/28071777/pexels-photo-28071777.jpeg"
                             alt="Retro Jerseys"
                             class="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-500 group-hover:scale-105">
@@ -245,7 +261,7 @@
 
                                 <p class="text-[9px] font-medium text-[#646D7B] uppercase tracking-wider mt-0.5">Explore
                                     Category →</p>
-                                </a>
+                            </a>
                         </div>
                     </div>
 
@@ -258,18 +274,18 @@
                         <div class="absolute bottom-4 left-4 z-10">
                             <h3 class="text-xs font-bold uppercase tracking-widest text-white">TrackSuit & Training Kits
                             </h3>
-                         <a href="product.html">
+                            <a href="product.html">
 
                                 <p class="text-[9px] font-medium text-[#646D7B] uppercase tracking-wider mt-0.5">Explore
                                     Category →</p>
-                                </a>
+                            </a>
                         </div>
                     </div>
 
                 </div>
             </section>
 
-            
+
 
             <!-- 1. THE LATEST DROPS CAROUSEL               -->
             <section id="shop"
@@ -327,7 +343,7 @@
                                 class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/20 z-10">
                             </div>
                             <span
-                                class="absolute top-4 left-4 z-20 bg-blue-500 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md shadow-md">Plug
+                                class="absolute top-4 left-4 z-20 bg-blue-500 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md shadow-md">Plugon
                                 Exclusive</span>
                             <div class="absolute inset-x-0 bottom-0 p-5 z-20 flex flex-col justify-end">
                                 <div class="mb-3">
@@ -351,7 +367,8 @@
                                 </div>
                                 <a href="product.html" class="w-full">
                                     <button type="button"
-                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore Drop</button>
+                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore
+                                        Drop</button>
                                 </a>
                             </div>
                         </div>
@@ -367,7 +384,7 @@
                                 class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/20 z-10">
                             </div>
                             <span
-                                class="absolute top-4 left-4 z-20 bg-blue-500 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md shadow-md">Plug
+                                class="absolute top-4 left-4 z-20 bg-blue-500 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md shadow-md">Plugon
                                 Exclusive</span>
                             <div class="absolute inset-x-0 bottom-0 p-5 z-20 flex flex-col justify-end">
                                 <div class="mb-3">
@@ -388,9 +405,10 @@
                                             class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">XL</button>
                                     </div>
                                 </div>
-                                  <a href="product.html" class="w-full">
+                                <a href="product.html" class="w-full">
                                     <button type="button"
-                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore Drop</button>
+                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore
+                                        Drop</button>
                                 </a>
                             </div>
                         </div>
@@ -406,7 +424,7 @@
                                 class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/20 z-10">
                             </div>
                             <span
-                                class="absolute top-4 left-4 z-20 bg-blue-500 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md shadow-md">Plug
+                                class="absolute top-4 left-4 z-20 bg-blue-500 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md shadow-md">Plugon
                                 Exclusive</span>
                             <div class="absolute inset-x-0 bottom-0 p-5 z-20 flex flex-col justify-end">
                                 <div class="mb-3">
@@ -427,9 +445,10 @@
                                             class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">XL</button>
                                     </div>
                                 </div>
-                                 <a href="product.html" class="w-full">
+                                <a href="product.html" class="w-full">
                                     <button type="button"
-                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore Drop</button>
+                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore
+                                        Drop</button>
                                 </a>
                             </div>
                         </div>
@@ -445,7 +464,7 @@
                                 class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/20 z-10">
                             </div>
                             <span
-                                class="absolute top-4 left-4 z-20 bg-blue-500 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md shadow-md">Plug
+                                class="absolute top-4 left-4 z-20 bg-blue-500 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md shadow-md">Plugon
                                 Exclusive</span>
                             <div class="absolute inset-x-0 bottom-0 p-5 z-20 flex flex-col justify-end">
                                 <div class="mb-3">
@@ -466,9 +485,10 @@
                                             class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">XL</button>
                                     </div>
                                 </div>
-          <a href="product.html" class="w-full">
+                                <a href="product.html" class="w-full">
                                     <button type="button"
-                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore Drop</button>
+                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore
+                                        Drop</button>
                                 </a>
                             </div>
                         </div>
@@ -505,9 +525,10 @@
                                             class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">XL</button>
                                     </div>
                                 </div>
-                                  <a href="product.html" class="w-full">
+                                <a href="product.html" class="w-full">
                                     <button type="button"
-                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore Drop</button>
+                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore
+                                        Drop</button>
                                 </a>
                             </div>
                         </div>
@@ -543,9 +564,10 @@
                                             class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">XL</button>
                                     </div>
                                 </div>
-                                  <a href="product.html" class="w-full">
+                                <a href="product.html" class="w-full">
                                     <button type="button"
-                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore Drop</button>
+                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore
+                                        Drop</button>
                                 </a>
                             </div>
                         </div>
@@ -582,10 +604,11 @@
                                             class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">XL</button>
                                     </div>
                                 </div>
-                                 <a href="product.html" class="w-full">
+                                <a href="product.html" class="w-full">
                                     <button type="button"
-                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore Drop</button>
-                                </a> 
+                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore
+                                        Drop</button>
+                                </a>
                             </div>
                         </div>
 
@@ -620,9 +643,10 @@
                                             class="py-1 text-[10px] font-black uppercase rounded bg-white/5 border border-white/10 text-neutral-300 hover:bg-blue-500 hover:text-white">XL</button>
                                     </div>
                                 </div>
-                                  <a href="product.html" class="w-full">
+                                <a href="product.html" class="w-full">
                                     <button type="button"
-                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore Drop</button>
+                                        class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-white hover:bg-white/20 hover:text-white text-black font-black uppercase tracking-widest text-[11px] rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg">Explore
+                                        Drop</button>
                                 </a>
                             </div>
                         </div>
@@ -705,94 +729,112 @@
 
 
     </div>
-<!-- PREMIUM FAQ SECTION -->
-<section class="w-full bg-[#0B0C0E] py-24 px-4 md:px-8 border-t border-[#111214]">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
-        
-        <!-- Left Column: Headers -->
-        <div class="lg:col-span-1 flex flex-col justify-between">
-            <div>
-                <span class="text-[11px] font-black tracking-[0.2em] text-blue-500 uppercase">Information Hub</span>
-                <h2 class="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mt-3 leading-none">
-                    Common <br class="hidden lg:block">Questions
-                </h2>
+    <!-- PREMIUM FAQ SECTION -->
+    <section class="w-full bg-[#0B0C0E] py-24 px-4 md:px-8 border-t border-[#111214]">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+            <!-- Left Column: Headers -->
+            <div class="lg:col-span-1 flex flex-col justify-between">
+                <div>
+                    <span class="text-[11px] font-black tracking-[0.2em] text-blue-500 uppercase">Information Hub</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mt-3 leading-none">
+                        Common <br class="hidden lg:block">Questions
+                    </h2>
+                </div>
+                <p class="text-[#6C737F] text-xs font-medium max-w-sm mt-6 lg:mt-0 leading-relaxed">
+                    Can't find what you are looking for? Reach out to our support team directly via the contact portal
+                    for immediate assistance.
+                </p>
             </div>
-            <p class="text-[#6C737F] text-xs font-medium max-w-sm mt-6 lg:mt-0 leading-relaxed">
-                Can't find what you are looking for? Reach out to our support team directly via the contact portal for immediate assistance.
-            </p>
+
+            <!-- Right Column: Minimalist Accordion Grid -->
+            <div class="lg:col-span-2 divide-y divide-[#111214]">
+
+                <!-- Item 1 -->
+                <div class="faq-item py-6 first:pt-0 group cursor-pointer">
+                    <div class="flex justify-between items-center gap-4" onclick="toggleFaq(this)">
+                        <h3
+                            class="text-sm font-bold text-[#E2E5E9] uppercase tracking-wide transition-colors group-hover:text-blue-200">
+                            Are these jerseys player version or fan version?
+                        </h3>
+                        <span
+                            class="faq-icon text-[#6C737F] text-lg font-light transition-transform duration-300 group-hover:text-blue-200">+</span>
+                    </div>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="text-xs text-[#9AA3AE] pt-4 leading-relaxed max-w-2xl">
+                            We source both. Player version jerseys feature a slim, athletic cut with heat-pressed badges
+                            and advanced ventilation fabrics. Fan versions offer a slightly standard, relaxed fit with
+                            beautifully embroidered club crests. The specific version is always noted in the item
+                            details.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="faq-item py-6 group cursor-pointer">
+                    <div class="flex justify-between items-center gap-4" onclick="toggleFaq(this)">
+                        <h3
+                            class="text-sm font-bold text-[#E2E5E9] uppercase tracking-wide transition-colors group-hover:text-blue-200">
+                            How long does delivery take within Lagos?
+                        </h3>
+                        <span
+                            class="faq-icon text-[#6C737F] text-lg font-light transition-transform duration-300 group-hover:text-blue-200">+</span>
+                    </div>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="text-xs text-[#9AA3AE] pt-4 leading-relaxed max-w-2xl">
+                            Orders within Lagos (Island and Mainland) typically deliver within 24 to 48 hours. For
+                            standard nationwide shipping outside Lagos, please allow 3 to 5 business days for your
+                            package to arrive.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="faq-item py-6 group cursor-pointer">
+                    <div class="flex justify-between items-center gap-4" onclick="toggleFaq(this)">
+                        <h3
+                            class="text-sm font-bold text-[#E2E5E9] uppercase tracking-wide transition-colors group-hover:text-blue-200">
+                            Can I customize a jersey with my own name and number?
+                        </h3>
+                        <span
+                            class="faq-icon text-[#6C737F] text-lg font-light transition-transform duration-300 group-hover:text-blue-200">+</span>
+                    </div>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="text-xs text-[#9AA3AE] pt-4 leading-relaxed max-w-2xl">
+                            Yes. Custom nameplates and numbers use official club fonts and pairing graphics. To request
+                            personalization, select the custom option on the product page or drop your specific
+                            instructions in the checkout notes.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="faq-item py-6 group cursor-pointer">
+                    <div class="flex justify-between items-center gap-4" onclick="toggleFaq(this)">
+                        <h3
+                            class="text-sm font-bold text-[#E2E5E9] uppercase tracking-wide transition-colors group-hover:text-blue-200">
+                            What is your return policy if a jersey doesn't fit?
+                        </h3>
+                        <span
+                            class="faq-icon text-[#6C737F] text-lg font-light transition-transform duration-300 group-hover:text-blue-200">+</span>
+                    </div>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="text-xs text-[#9AA3AE] pt-4 leading-relaxed max-w-2xl">
+                            We accept exchanges within 7 days of delivery, provided the tags are completely intact and
+                            the item is unworn. Please note that custom personalized jerseys (with custom names/numbers)
+                            cannot be returned or exchanged.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
         </div>
-
-        <!-- Right Column: Minimalist Accordion Grid -->
-        <div class="lg:col-span-2 divide-y divide-[#111214]">
-            
-            <!-- Item 1 -->
-            <div class="faq-item py-6 first:pt-0 group cursor-pointer">
-                <div class="flex justify-between items-center gap-4" onclick="toggleFaq(this)">
-                    <h3 class="text-sm font-bold text-[#E2E5E9] uppercase tracking-wide transition-colors group-hover:text-blue-200">
-                        Are these jerseys player version or fan version?
-                    </h3>
-                    <span class="faq-icon text-[#6C737F] text-lg font-light transition-transform duration-300 group-hover:text-blue-200">+</span>
-                </div>
-                <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                    <p class="text-xs text-[#9AA3AE] pt-4 leading-relaxed max-w-2xl">
-                        We source both. Player version jerseys feature a slim, athletic cut with heat-pressed badges and advanced ventilation fabrics. Fan versions offer a slightly standard, relaxed fit with beautifully embroidered club crests. The specific version is always noted in the item details.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Item 2 -->
-            <div class="faq-item py-6 group cursor-pointer">
-                <div class="flex justify-between items-center gap-4" onclick="toggleFaq(this)">
-                    <h3 class="text-sm font-bold text-[#E2E5E9] uppercase tracking-wide transition-colors group-hover:text-blue-200">
-                        How long does delivery take within Lagos?
-                    </h3>
-                    <span class="faq-icon text-[#6C737F] text-lg font-light transition-transform duration-300 group-hover:text-blue-200">+</span>
-                </div>
-                <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                    <p class="text-xs text-[#9AA3AE] pt-4 leading-relaxed max-w-2xl">
-                        Orders within Lagos (Island and Mainland) typically deliver within 24 to 48 hours. For standard nationwide shipping outside Lagos, please allow 3 to 5 business days for your package to arrive.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Item 3 -->
-            <div class="faq-item py-6 group cursor-pointer">
-                <div class="flex justify-between items-center gap-4" onclick="toggleFaq(this)">
-                    <h3 class="text-sm font-bold text-[#E2E5E9] uppercase tracking-wide transition-colors group-hover:text-blue-200">
-                        Can I customize a jersey with my own name and number?
-                    </h3>
-                    <span class="faq-icon text-[#6C737F] text-lg font-light transition-transform duration-300 group-hover:text-blue-200">+</span>
-                </div>
-                <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                    <p class="text-xs text-[#9AA3AE] pt-4 leading-relaxed max-w-2xl">
-                        Yes. Custom nameplates and numbers use official club fonts and pairing graphics. To request personalization, select the custom option on the product page or drop your specific instructions in the checkout notes.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Item 4 -->
-            <div class="faq-item py-6 group cursor-pointer">
-                <div class="flex justify-between items-center gap-4" onclick="toggleFaq(this)">
-                    <h3 class="text-sm font-bold text-[#E2E5E9] uppercase tracking-wide transition-colors group-hover:text-blue-200">
-                        What is your return policy if a jersey doesn't fit?
-                    </h3>
-                    <span class="faq-icon text-[#6C737F] text-lg font-light transition-transform duration-300 group-hover:text-blue-200">+</span>
-                </div>
-                <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                    <p class="text-xs text-[#9AA3AE] pt-4 leading-relaxed max-w-2xl">
-                        We accept exchanges within 7 days of delivery, provided the tags are completely intact and the item is unworn. Please note that custom personalized jerseys (with custom names/numbers) cannot be returned or exchanged.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
+    </section>
 
 
 
 
-  <!-- 3. THE FOOTER HUB                          -->
+    <!-- 3. THE FOOTER HUB                          -->
     <footer id="footer"
         class="bg-neutral-950 text-white font-['Space_Grotesk'] sans-serif border-t border-neutral-900 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -801,7 +843,7 @@
                 <!-- Brand Profile -->
                 <div class="md:col-span-1 flex flex-col items-center md:items-start">
                     <span class="text-xl font-black tracking-widest uppercase text-white mb-4">
-                        PLUG<span class="text-blue-500">.</span>
+                        PLUGON<span class="text-blue-500">.</span>
                     </span>
                     <p class="text-xs text-neutral-400 leading-relaxed text-center md:text-left max-w-xs">
                         Your direct portal to premium curated streetwear, retro heritage jerseys, and exclusive matchday
@@ -834,10 +876,9 @@
                     <ul class="space-y-2 text-center md:text-left">
                         <!-- 1-on-1 VIP Chat (Direct WhatsApp Link) -->
                         <li>
-                            <a href="https://wa.me/2349077104995?text=Hey%20PLUGONJERSEYS%20%20I'd%20love%20to%20get%20started%20with%20a%201-on-1%20VIP%20sourcing%20session%20for%20some%20kits." 
-                               target="_blank" 
-                               class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">
-                               1-on-1 VIP Chat
+                            <a href="https://wa.me/2349077104995?text=Hey%20PLUGONJERSEYS%20%20I'd%20love%20to%20get%20started%20with%20a%201-on-1%20VIP%20sourcing%20session%20for%20some%20kits."
+                                target="_blank" class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">
+                                1-on-1 VIP Chat
                             </a>
                         </li>
                         <li><a href="size-guide.html"
@@ -845,13 +886,12 @@
                         </li>
                         <!-- Order Tracking Trigger -->
                         <li>
-                            <a href="javascript:void(0)" 
-                               onclick="toggleTrackingModal(true)" 
-                               class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">
-                               Order Tracking
+                            <a href="javascript:void(0)" onclick="toggleTrackingModal(true)"
+                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">
+                                Order Tracking
                             </a>
                         </li>
-                        <li><a href="#faq" class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">FAQ 
+                        <li><a href="#faq" class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">FAQ
                             </a></li>
                     </ul>
                 </div>
@@ -878,7 +918,7 @@
             <!-- Copyright / Bottom Meta -->
             <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center">
                 <p class="text-[10px] font-bold tracking-wider text-neutral-500 uppercase">
-                    &copy; <span id="copyright-year"></span> PLUG STOREHOUSE. ALL RIGHTS VAULTED.
+                    &copy; <span id="copyright-year"></span> PLUGON STOREHOUSE. ALL RIGHTS VAULTED.
                 </p>
                 <div class="flex gap-6">
                     <a href="privacy.html"
@@ -891,40 +931,46 @@
             </div>
         </div>
     </footer>
-<!-- ORDER TRACKING MODAL -->
-<div id="trackingModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="bg-[#111214] border border-[#202226] w-full max-w-md p-6 rounded-lg relative mx-4">
-        <!-- Close Button -->
-        <button onclick="toggleTrackingModal(false)" class="absolute top-4 right-4 text-[#9AA3AE] hover:text-white text-lg font-bold">&times;</button>
-        
-        <h3 class="text-sm font-black uppercase tracking-widest text-white mb-2">Track Your Package</h3>
-        <p class="text-[11px] text-[#646D7B] uppercase tracking-wide mb-4">Enter your tracking number or dispatch code below.</p>
-        
-        <!-- Input Field -->
-        <div class="flex gap-2 mb-6">
-            <input type="text" id="trackingInput" placeholder="e.g. PLUG-88239" class="bg-[#1c1d21] border border-[#202226] rounded px-3 py-2 text-xs text-white uppercase tracking-wider focus:outline-none focus:border-blue-500 flex-1">
-            <button onclick="checkTracking()" class="bg-blue-500 hover:bg-blue-600 text-white font-black uppercase tracking-widest text-[10px] px-4 rounded transition-colors">Search</button>
-        </div>
+    <!-- ORDER TRACKING MODAL -->
+    <div id="trackingModal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-[#111214] border border-[#202226] w-full max-w-md p-6 rounded-lg relative mx-4">
+            <!-- Close Button -->
+            <button onclick="toggleTrackingModal(false)"
+                class="absolute top-4 right-4 text-[#9AA3AE] hover:text-white text-lg font-bold">&times;</button>
 
-        <!-- STREAMLINED TRACKING RESULT (Hidden by default) -->
-        <div id="trackingResult" class="hidden space-y-4 border-t border-[#202226] pt-4">
-            <div class="bg-[#1c1d21] border border-[#202226] rounded-md p-4">
-                <div class="flex justify-between items-center text-[10px] uppercase font-bold tracking-wider mb-2">
-                    <span class="text-[#646D7B]">Order ID:</span>
-                    <span class="text-white" id="displayTrackingCode">PLUGONJERSEYS</span>
-                </div>
-                <div class="flex justify-between items-center text-[10px] uppercase font-bold tracking-wider">
-                    <span class="text-[#646D7B]">Status:</span>
-                    <span class="text-blue-400 animate-pulse">Processing / Sourcing</span>
-                </div>
-                <p class="text-[10px] text-[#9AA3AE] uppercase leading-relaxed mt-3 border-t border-[#202226] pt-3">
-                    Your order is currently being processed and authenticated by our team. Once dispatched via our local courier network, you will receive a direct update with your driver's contact details.
-                </p>
+            <h3 class="text-sm font-black uppercase tracking-widest text-white mb-2">Track Your Package</h3>
+            <p class="text-[11px] text-[#646D7B] uppercase tracking-wide mb-4">Enter your tracking number or dispatch
+                code below.</p>
+
+            <!-- Input Field -->
+            <div class="flex gap-2 mb-6">
+                <input type="text" id="trackingInput" placeholder="e.g. PLUG-88239"
+                    class="bg-[#1c1d21] border border-[#202226] rounded px-3 py-2 text-xs text-white uppercase tracking-wider focus:outline-none focus:border-blue-500 flex-1">
+                <button onclick="checkTracking()"
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-black uppercase tracking-widest text-[10px] px-4 rounded transition-colors">Search</button>
             </div>
+
+            <!-- STREAMLINED TRACKING RESULT (Hidden by default) -->
+            <div id="trackingResult" class="hidden space-y-4 border-t border-[#202226] pt-4">
+                <div class="bg-[#1c1d21] border border-[#202226] rounded-md p-4">
+                    <div class="flex justify-between items-center text-[10px] uppercase font-bold tracking-wider mb-2">
+                        <span class="text-[#646D7B]">Order ID:</span>
+                        <span class="text-white" id="displayTrackingCode">PLUGONJERSEYS</span>
+                    </div>
+                    <div class="flex justify-between items-center text-[10px] uppercase font-bold tracking-wider">
+                        <span class="text-[#646D7B]">Status:</span>
+                        <span class="text-blue-400 animate-pulse">Processing / Sourcing</span>
+                    </div>
+                    <p class="text-[10px] text-[#9AA3AE] uppercase leading-relaxed mt-3 border-t border-[#202226] pt-3">
+                        Your order is currently being processed and authenticated by our team. Once dispatched via our
+                        local courier network, you will receive a direct update with your driver's contact details.
+                    </p>
+                </div>
+            </div>
+
         </div>
-        
     </div>
-</div>
 
 
     <!-- SIMPLE JAVASCRIPT SYSTEM -->
@@ -955,7 +1001,7 @@
 
             const getScrollAmount = () => {
                 // Dynamic shift spacing based on responsive breakpoints
-                if (window.innerWidth >= 1024) return container.offsetWidth / 2; 
+                if (window.innerWidth >= 1024) return container.offsetWidth / 2;
                 return container.offsetWidth * 0.85; // Move 1 card on mobile/tablet
             };
 
@@ -1009,33 +1055,33 @@
 
 
     </script>
-   
-<script>
-function toggleFaq(element) {
-    const content = element.nextElementSibling;
-    const icon = element.querySelector('.faq-icon');
-    
-    // Toggle active state
-    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
-        content.style.maxHeight = '0px';
-        icon.style.transform = 'rotate(0deg)';
-        icon.textContent = '+';
-    } else {
-        // Close all other open items first to keep it clean
-        document.querySelectorAll('.faq-content').forEach(el => el.style.maxHeight = '0px');
-        document.querySelectorAll('.faq-icon').forEach(el => {
-            el.style.transform = 'rotate(0deg)';
-            el.textContent = '+';
-        });
-        
-        // Open current item
-        content.style.maxHeight = content.scrollHeight + 'px';
-        icon.style.transform = 'rotate(45deg)';
-        icon.textContent = '×';
-    }
-    
-}
-</script>
+
+    <script>
+        function toggleFaq(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('.faq-icon');
+
+            // Toggle active state
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                content.style.maxHeight = '0px';
+                icon.style.transform = 'rotate(0deg)';
+                icon.textContent = '+';
+            } else {
+                // Close all other open items first to keep it clean
+                document.querySelectorAll('.faq-content').forEach(el => el.style.maxHeight = '0px');
+                document.querySelectorAll('.faq-icon').forEach(el => {
+                    el.style.transform = 'rotate(0deg)';
+                    el.textContent = '+';
+                });
+
+                // Open current item
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.style.transform = 'rotate(45deg)';
+                icon.textContent = '×';
+            }
+
+        }
+    </script>
     <!-- cursor ring animation -->
     <div id="cursor-dot"></div>
     <div id="cursor-ring"></div>
