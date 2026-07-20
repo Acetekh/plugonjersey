@@ -1,6 +1,6 @@
-/* ==========================================================================
+/* 
    PLUG PREMIUM DESIGN SYSTEM — CORE ARCHITECTURE
-   ========================================================================== */
+   */
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
@@ -41,9 +41,9 @@ body {
   padding-top: 100px; /* Air-gap padding safeguarding background layout under fixed navbar */
 }
 
-/* ==========================================================================
+/* 
    COMPONENT: FROSTED FLOATING CAPSULE NAVBAR
-   ========================================================================== */
+   */
 .floating-header-wrapper {
   position: fixed;
   top: 0;
@@ -136,9 +136,9 @@ body {
   text-decoration: none;
 }
 
-/* ==========================================================================
+/* 
    MOBILE RESPONSIVE SYSTEM EXTENSION
-   ========================================================================== */
+   */
 .mobile-menu-toggle {
   display: none;
   background: transparent;
@@ -247,9 +247,9 @@ body {
   padding: 0 2px;
 }
 
-/* ==========================================================================
+/* 
    PAGE MODULE: SHOP CATALOG (CULTURE KINGS INTERACTIVE ENGINE)
-   ========================================================================== */
+   */
 .shop-page-container {
   max-width: 1440px;
   margin: 0 auto;
@@ -462,9 +462,9 @@ body {
   color: #000000;
 }
 
-/* ==========================================================================
+/* 
    PAGE MODULE: TACTICAL RETAIL CART PANEL
-   ========================================================================== */
+   */
 .wrapper {
   max-width: 1380px;
   margin: 0 auto;
@@ -969,9 +969,9 @@ body {
   text-transform: uppercase;
 }
 
-/* ==========================================================================
+/* 
    GLOBAL ENTRANCE MICRO-ANIMATIONS
-   ========================================================================== */
+   */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -984,9 +984,9 @@ body {
 
 .summary-sticky { animation: fadeUp 0.5s 0.2s ease both; }
 
-/* ==========================================================================
+/* 
    GLOBAL RESPONSIVE BREAKPOINTS (Enhanced Hardware Stack Systems)
-   ========================================================================== */
+   */
 @media (max-width: 1024px) {
   .catalog-products-grid.columns-4, 
   .catalog-products-grid.columns-3 {

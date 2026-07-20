@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>PLUGONJERSEY. | Premium Football Streetwear</title>
+    <title>PLUGONJERSEY. | Premium Football Streetwear</title>
     <link rel="icon" href="./images/favicon.png" type="image/png">
 
     <!-- Tailwind CSS CDN -->
@@ -18,6 +19,8 @@
     <style>
         body {
             font-family: 'Space Grotesk', sans-serif;
+animation:fade .10s forwards;
+
         }
 
         #carousel-container {
@@ -58,199 +61,210 @@
             background: rgba(59, 130, 246, 0.1);
             border-color: #3b82f6;
         }
-        
     </style>
-    
+
 </head>
+
 <body class="bg-[#0B0C0E] text-white antialiased min-h-screen flex flex-col justify-between">
 
-<div class="max-w-7xl mx-auto flex flex-col gap-8">
+    <div class="max-w-7xl mx-auto flex flex-col gap-8">
 
-    <header class="w-full pt-6 relative z-50 sticky top-0">
-        <nav
-        class="w-full h-16 bg-neutral-900 border border-[#202226] rounded-full px-6 md:px-8 flex items-center justify-between">
-        <!-- Mobile Menu Toggle -->
-        <button id="mobileMenuBtn" class="flex md:hidden text-neutral-400 hover:text-white">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-        </button>
-        
-        <!-- Brand -->
-        <div class="text-white font-black tracking-widest text-sm uppercase">
-            PLUGONJERSEY<span class="text-blue-500">.</span>
-        </div>
-        
-        <!-- Desktop Nav -->
-        <div class="hidden md:grid grid-cols-4 gap-1.5 backdrop-blur-md  p-1 rounded-xl min-w-[320px]">
-            <a href="index.html"
-            class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5">Home</a>
-            <a href="about.html"
-            class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">About</a>
-            <a href="product.html"
-            class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Shop</a>
-            <a href="contact.html"
-            class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-white bg-white/10 rounded-lg transition-colors">Support</a>
-        </div>
-        
-        <!-- Search & Cart -->
-        <div class="flex items-center gap-4 text-white">
-            <div class="relative flex items-center">
-                <button id="searchBtn" class="hover:text-neutral-400 focus:outline-none">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        <header class="w-full pt-6 relative z-50 sticky top-0">
+            <nav
+                class="w-full h-16 bg-neutral-900 border border-[#202226] rounded-full px-6 md:px-8 flex items-center justify-between">
+                <!-- Mobile Menu Toggle -->
+                <button id="mobileMenuBtn" class="flex md:hidden text-neutral-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
-                <input id="searchInput" type="text" placeholder="Search jerseys..."
-                class="hidden absolute right-0 top-10 w-48 bg-neutral-950 border border-neutral-800 text-[10px] text-white p-2 rounded-lg outline-none uppercase tracking-widest transition-all">
-            </div>
-            <button class="relative hover:text-neutral-400">
-       <a href="cart.html" class="relative text-white hover:text-neutral-400 transition-colors duration-200">
-    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-    </svg>
-    <span id="navCartCountBadge"
-        class="absolute -top-1.5 -right-1.5 bg-blue-600 text-white text-[8px] font-black w-3.5 h-3.5 rounded-full flex items-center justify-center">0</span>
-</a>
-            </button>
-        </div>
-    </nav>
-       <div id="mobileNavMenu"
-                    class="hidden absolute top-24 left-0 w-full bg-neutral-900 border border-[#202226] rounded-2xl p-6 flex flex-col gap-4">
+
+                <!-- Brand -->
+                <div class="text-white font-black tracking-widest text-sm uppercase">
+                    PLUGON<span class="text-blue-500">.</span>
+                </div>
+
+                <!-- Desktop Nav -->
+                <div class="hidden md:grid grid-cols-4 gap-1.5 backdrop-blur-md  p-1 rounded-xl min-w-[320px]">
                     <a href="index.html"
-                        class="text-neutral-400 font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">Home</a>
-                        <a href="about.html"
-                            class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">About</a>
+                        class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5">Home</a>
+                    <a href="about.html"
+                        class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">About</a>
                     <a href="product.html"
-                        class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">Shop</a>
-                    <a href="#"
-                        class="text-white hover:text-white font-bold text-sm uppercase tracking-widest pb-1">Support</a>
+                        class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Shop</a>
+                    <a href="contact.html"
+                        class="flex h-9 items-center justify-center text-[10px] font-bold uppercase tracking-widest text-white bg-white/10 rounded-lg transition-colors">Support</a>
                 </div>
-</header>
-   <!-- BREADCRUMB -->
-            <div class="px-4 sm:px-6 lg:px-8 py-3">
-                <nav class="font-sans text-[8px] uppercase tracking-[0.3em] text-gray-500">
-                    <a href="index.html" class="hover:text-blue-500 transition">Home</a>
-                    <span class="mx-2 text-zinc-700">/</span>
-                    <span class="text-zinc-300">Contact</span>
-                </nav>
+
+                <!-- Search & Cart -->
+                <div class="flex items-center gap-4 text-white">
+                    <div class="relative flex items-center">
+                        <button id="searchBtn" class="hover:text-neutral-400 focus:outline-none">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </button>
+                        <input id="searchInput" type="text" placeholder="Search jerseys..."
+                            class="hidden absolute right-0 top-10 w-48 bg-neutral-950 border border-neutral-800 text-[10px] text-white p-2 rounded-lg outline-none uppercase tracking-widest transition-all">
+                    </div>
+                    <button class="relative hover:text-neutral-400">
+                        <a href="cart.html"
+                            class="relative text-white hover:text-neutral-400 transition-colors duration-200">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                            </svg>
+                            <span id="navCartCountBadge"
+                                class="absolute -top-1.5 -right-1.5 bg-blue-600 text-white text-[8px] font-black w-3.5 h-3.5 rounded-full flex items-center justify-center">0</span>
+                        </a>
+                    </button>
+                </div>
+            </nav>
+            <div id="mobileNavMenu"
+                class="hidden absolute top-24 left-0 w-full bg-neutral-900 border border-[#202226] rounded-2xl p-6 flex flex-col gap-4">
+                <a href="index.html"
+                    class="text-neutral-400 font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">Home</a>
+                <a href="about.html"
+                    class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">About</a>
+                <a href="product.html"
+                    class="text-neutral-400 hover:text-white font-bold text-sm uppercase tracking-widest border-b border-neutral-800 pb-2">Shop</a>
+                <a href="#"
+                    class="text-white hover:text-white font-bold text-sm uppercase tracking-widest pb-1">Support</a>
             </div>
-
-<div class=" md:px-8 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-    
-   <!-- LEFT COLUMN: Direct Lines (Takes up 5 columns on desktop) -->
-<div class="lg:col-span-5 space-y-8 md:space-y-12 px-4 sm:px-0">
-    <div class="text-left">
-        <span class="text-[9px] md:text-[10px] font-black tracking-[0.3em] text-blue-500 uppercase block mb-2 md:mb-3">
-            Direct Support
-        </span>
-        <!-- Fluid text scaling so it doesn't wrap awkwardly on small phone screens -->
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight leading-none text-white">
-            Connect With <br class="hidden sm:inline">The Team
-        </h1>
-        <p class="text-[#6C737F] text-xs font-medium mt-4 md:mt-6 leading-relaxed max-w-md">
-            Looking for updates regarding batch delivery schedules, bulk order positioning, or customized kit fonts? Drop a message or reach out through our operational channels.
-        </p>
-    </div>
-    
-    <!-- Operational Sub-Channels (No icons, pure structure) -->
-    <div class="space-y-5 md:space-y-6 pt-6 border-t border-[#1C1D21]">
-        <div>
-            <h4 class="text-[9px] md:text-[10px] font-black tracking-widest uppercase text-[#6C737F] mb-1">Operational Hub</h4>
-            <p class="text-xs font-bold text-[#E2E5E9]">Lekki Phase 1, Lagos, Nigeria</p>
-        </div>
-        <div>
-            <h4 class="text-[9px] md:text-[10px] font-black tracking-widest uppercase text-[#6C737F] mb-1">General Inquiries</h4>
-            <p class="text-xs font-bold text-[#E2E5E9] hover:text-blue-500 transition-colors break-all">
-                <a href="mailto:support@plugkits.com">support@plugkits.com</a>
-            </p>
-        </div>
-        <div>
-            <h4 class="text-[9px] md:text-[10px] font-black tracking-widest uppercase text-[#6C737F] mb-1">Bulk Orders & Team Customizations</h4>
-            <p class="text-xs font-bold text-[#E2E5E9] hover:text-blue-500 transition-colors break-all">
-                <a href="mailto:orders@plugkits.com">orders@plugkits.com</a>
-            </p>
-        </div>
-    </div>
-</div>
-    
-   <!-- RIGHT COLUMN: Premium Form Grid (Takes up 7 columns) -->
-<!-- Adjusted mobile padding from p-8 to px-4 py-6 for maximum breathing room on phones -->
-<div class="lg:col-span-7 bg-transparent border border-[#202226] px-4 py-6 sm:p-8 md:p-10 rounded-lg relative">
-
-    <form action="#" method="POST" class="space-y-6">
-
-        <!-- Two Column Row for Name and Email -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div class="flex flex-col">
-                <label for="name"
-                    class="text-[9px] md:text-[10px] font-black tracking-widest uppercase text-[#6C737F] mb-2">
-                    Your Name
-                </label>
-                <input type="text" id="name" name="name" required
-                    class="bg-[#111214] border border-[#202226] focus:border-blue-500 focus:outline-none rounded-md h-[48px] px-4 text-xs font-medium text-white transition-all duration-200">
-            </div>
-            <div class="flex flex-col">
-                <label for="email"
-                    class="text-[9px] md:text-[10px] font-black tracking-widest uppercase text-[#6C737F] mb-2">
-                    Email Address
-                </label>
-                <input type="email" id="email" name="email" required
-                    class="bg-[#111214] border border-[#202226] focus:border-blue-500 focus:outline-none rounded-md h-[48px] px-4 text-xs font-medium text-white transition-all duration-200">
-            </div>
+        </header>
+        <!-- BREADCRUMB -->
+        <div class="px-4 sm:px-6 lg:px-8 py-3">
+            <nav class="font-sans text-[8px] uppercase tracking-[0.3em] text-gray-500">
+                <a href="index.html" class="hover:text-blue-500 transition">Home</a>
+                <span class="mx-2 text-zinc-700">/</span>
+                <span class="text-zinc-300">Contact</span>
+            </nav>
         </div>
 
-        <!-- Custom dropdown category selection -->
-        <div class="flex flex-col relative">
-            <label for="subject"
-                class="text-[9px] md:text-[10px] font-black tracking-widest uppercase text-[#6C737F] mb-2">
-                Inquiry Type
-            </label>
-            <div class="relative">
-                <select id="subject" name="subject" required
-                    class="w-full bg-[#111214] border border-[#202226] focus:border-blue-500 focus:outline-none rounded-md h-[48px] px-4 pr-10 text-xs font-medium text-[#9AA3AE] transition-all duration-200 cursor-pointer appearance-none">
-                    <option value="order-status">Order Status & Logistics</option>
-                    <option value="customization">Player Font Nameplate Customization</option>
-                    <option value="bulk-buy">Bulk Purchases (10+ Kits)</option>
-                    <option value="other">General Support</option>
-                </select>
-                <!-- Premium Custom Dropdown Arrow -->
-                <div class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-[#6C737F]">
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                    </svg>
+        <div class=" md:px-8 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+
+            <!-- LEFT COLUMN: Direct Lines (Takes up 5 columns on desktop) -->
+            <div class="lg:col-span-5 space-y-8 md:space-y-12 px-4 sm:px-0">
+                <div class="text-left">
+                    <span
+                        class="text-[9px] md:text-[10px] font-black tracking-[0.3em] text-blue-500 uppercase block mb-2 md:mb-3">
+                        Direct Support
+                    </span>
+                    <h1
+                        class="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight leading-none text-white">
+                        Connect With <br class="hidden sm:inline">The Team
+                    </h1>
+                    <p class="text-[#6C737F] text-xs font-medium mt-4 md:mt-6 leading-relaxed max-w-md">
+                        Looking for updates regarding batch delivery schedules, bulk order positioning, or customized
+                        kit fonts? Drop a message or reach out through our operational channels.
+                    </p>
+                </div>
+
+                <div class="space-y-5 md:space-y-6 pt-6 border-t border-[#1C1D21]">
+                    <div>
+                        <h4 class="text-[9px] md:text-[10px] font-black tracking-widest uppercase text-[#6C737F] mb-1">
+                            Operational Hub</h4>
+                        <p class="text-xs font-bold text-[#E2E5E9]">Lagos, Nigeria</p>
+                    </div>
+                    <div>
+                        <h4 class="text-[9px] md:text-[10px] font-black tracking-widest uppercase text-[#6C737F] mb-1">
+                            General Inquiries</h4>
+                        <p class="text-xs font-bold text-[#E2E5E9] hover:text-blue-500 transition-colors break-all">
+                            <a href="mailto:support@plugkits.com">Plugonservices@gmail.com</a>
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="text-[9px] md:text-[10px] font-black tracking-widest uppercase text-[#6C737F] mb-1">
+                            Bulk Orders & Team Customizations</h4>
+                        <p class="text-xs font-bold text-[#E2E5E9] hover:text-blue-500 transition-colors break-all">
+                            <a href="mailto:orders@plugkits.com">Plugonservices@gmail.com</a>
+                        </p>
+                    </div>
                 </div>
             </div>
+
+            <!-- RIGHT COLUMN:  -->
+            <div
+                class="lg:col-span-7 bg-transparent border border-[#202226] px-4 py-6 sm:p-8 md:p-10 rounded-lg relative">
+
+                <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+
+
+                    <input type="hidden" name="access_key" value="d67735b0-de08-4d2f-b7a7-66480359a4db">
+                   <input type="hidden" name="redirect" value="https://plugonjerseys.com/thank-you.html">
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex flex-col">
+                            <label for="name"
+                                class="text-[9px] md:text-[10px] font-black tracking-widest uppercase text-[#6C737F] mb-2">
+                                Your Name
+                            </label>
+                            <input type="text" id="name" name="name" required
+                                class="bg-[#111214] border border-[#202226] focus:border-blue-500 focus:outline-none rounded-md h-[48px] px-4 text-xs font-medium text-white transition-all duration-200">
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="email"
+                                class="text-[9px] md:text-[10px] font-black tracking-widest uppercase text-[#6C737F] mb-2">
+                                Email Address
+                            </label>
+                            <input type="email" id="email" name="email" required
+                                class="bg-[#111214] border border-[#202226] focus:border-blue-500 focus:outline-none rounded-md h-[48px] px-4 text-xs font-medium text-white transition-all duration-200">
+                        </div>
+                    </div>
+
+                    <!-- Custom dropdown category selection -->
+                    <div class="flex flex-col relative">
+                        <label for="subject"
+                            class="text-[9px] md:text-[10px] font-black tracking-widest uppercase text-[#6C737F] mb-2">
+                            Inquiry Type
+                        </label>
+                        <div class="relative">
+                            <select id="subject" name="subject" required
+                                class="w-full bg-[#111214] border border-[#202226] focus:border-blue-500 focus:outline-none rounded-md h-[48px] px-4 pr-10 text-xs font-medium text-[#9AA3AE] transition-all duration-200 cursor-pointer appearance-none">
+                                <option value="order-status">Order Status & Logistics</option>
+                                <option value="customization">Player Font Nameplate Customization</option>
+                                <option value="bulk-buy">Bulk Purchases (10+ Kits)</option>
+                                <option value="other">General Support</option>
+                            </select>
+                            <!-- Premium Custom Dropdown Arrow -->
+                            <div
+                                class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-[#6C737F]">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Message Textarea -->
+                    <div class="flex flex-col">
+                        <label for="message"
+                            class="text-[9px] md:text-[10px] font-black tracking-widest uppercase text-[#6C737F] mb-2">
+                            Message Description
+                        </label>
+                        <textarea id="message" name="message" rows="5" required
+                            class="bg-[#111214] border border-[#202226] focus:border-blue-500 focus:outline-none rounded-md p-4 text-xs font-medium text-white transition-all duration-200 resize-none"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div>
+                        <button type="submit"
+                            class="w-full h-[48px] border border-[#202226] hover:bg-white hover:text-black hover:border-white text-[#9AA3AE] font-black uppercase tracking-widest text-[11px] transition-all duration-200 bg-transparent rounded-md cursor-pointer">
+                            Send Message
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
         </div>
 
-        <!-- Message Textarea -->
-        <div class="flex flex-col">
-            <label for="message"
-                class="text-[9px] md:text-[10px] font-black tracking-widest uppercase text-[#6C737F] mb-2">
-                Message Description
-            </label>
-            <textarea id="message" name="message" rows="5" required
-                class="bg-[#111214] border border-[#202226] focus:border-blue-500 focus:outline-none rounded-md p-4 text-xs font-medium text-white transition-all duration-200 resize-none"></textarea>
-        </div>
-
-        <!-- Submit Button -->
-        <div>
-            <button type="submit"
-                class="w-full h-[48px] border border-[#202226] hover:bg-white hover:text-black hover:border-white text-[#9AA3AE] font-black uppercase tracking-widest text-[11px] transition-all duration-200 bg-transparent rounded-md cursor-pointer">
-                Send Message
-            </button>
-        </div>
-
-    </form>
-</div>
-
-</div>
-
-</div>
- <!-- 3. THE FOOTER HUB                          -->
+    </div>
+    <!-- 3. THE FOOTER HUB -->
     <footer id="footer"
         class="bg-neutral-950 text-white font-['Space_Grotesk'] sans-serif border-t border-neutral-900 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -292,10 +306,9 @@
                     <ul class="space-y-2 text-center md:text-left">
                         <!-- 1-on-1 VIP Chat (Direct WhatsApp Link) -->
                         <li>
-                            <a href="https://wa.me/2349077104995?text=Hey%20PLUGONJERSEYS%20%20I'd%20love%20to%20get%20started%20with%20a%201-on-1%20VIP%20sourcing%20session%20for%20some%20kits." 
-                               target="_blank" 
-                               class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">
-                               1-on-1 VIP Chat
+                            <a href="https://wa.me/2349077104995?text=Hey%20PLUGONJERSEYS%20%20I'd%20love%20to%20get%20started%20with%20a%201-on-1%20VIP%20sourcing%20session%20for%20some%20kits."
+                                target="_blank" class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">
+                                1-on-1 VIP Chat
                             </a>
                         </li>
                         <li><a href="size-guide.html"
@@ -303,13 +316,12 @@
                         </li>
                         <!-- Order Tracking Trigger -->
                         <li>
-                            <a href="javascript:void(0)" 
-                               onclick="toggleTrackingModal(true)" 
-                               class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">
-                               Order Tracking
+                            <a href="javascript:void(0)" onclick="toggleTrackingModal(true)"
+                                class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">
+                                Order Tracking
                             </a>
                         </li>
-                        <li><a href="#faq" class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">FAQ 
+                        <li><a href="#faq" class="text-xs text-neutral-400 hover:text-blue-400 transition-colors">FAQ
                             </a></li>
                     </ul>
                 </div>
@@ -349,44 +361,50 @@
             </div>
         </div>
     </footer>
-<!-- ORDER TRACKING MODAL -->
-<div id="trackingModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="bg-[#111214] border border-[#202226] w-full max-w-md p-6 rounded-lg relative mx-4">
-        <!-- Close Button -->
-        <button onclick="toggleTrackingModal(false)" class="absolute top-4 right-4 text-[#9AA3AE] hover:text-white text-lg font-bold">&times;</button>
-        
-        <h3 class="text-sm font-black uppercase tracking-widest text-white mb-2">Track Your Package</h3>
-        <p class="text-[11px] text-[#646D7B] uppercase tracking-wide mb-4">Enter your tracking number or dispatch code below.</p>
-        
-        <!-- Input Field -->
-        <div class="flex gap-2 mb-6">
-            <input type="text" id="trackingInput" placeholder="e.g. PLUG-88239" class="bg-[#1c1d21] border border-[#202226] rounded px-3 py-2 text-xs text-white uppercase tracking-wider focus:outline-none focus:border-blue-500 flex-1">
-            <button onclick="checkTracking()" class="bg-blue-500 hover:bg-blue-600 text-white font-black uppercase tracking-widest text-[10px] px-4 rounded transition-colors">Search</button>
-        </div>
+    <!-- ORDER TRACKING MODAL -->
+    <div id="trackingModal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-[#111214] border border-[#202226] w-full max-w-md p-6 rounded-lg relative mx-4">
+            <!-- Close Button -->
+            <button onclick="toggleTrackingModal(false)"
+                class="absolute top-4 right-4 text-[#9AA3AE] hover:text-white text-lg font-bold">&times;</button>
 
-        <!-- STREAMLINED TRACKING RESULT (Hidden by default) -->
-        <div id="trackingResult" class="hidden space-y-4 border-t border-[#202226] pt-4">
-            <div class="bg-[#1c1d21] border border-[#202226] rounded-md p-4">
-                <div class="flex justify-between items-center text-[10px] uppercase font-bold tracking-wider mb-2">
-                    <span class="text-[#646D7B]">Order ID:</span>
-                    <span class="text-white" id="displayTrackingCode">PLUGONJERSEYS</span>
-                </div>
-                <div class="flex justify-between items-center text-[10px] uppercase font-bold tracking-wider">
-                    <span class="text-[#646D7B]">Status:</span>
-                    <span class="text-blue-400 animate-pulse">Processing / Sourcing</span>
-                </div>
-                <p class="text-[10px] text-[#9AA3AE] uppercase leading-relaxed mt-3 border-t border-[#202226] pt-3">
-                    Your order is currently being processed and authenticated by our team. Once dispatched via our local courier network, you will receive a direct update with your driver's contact details.
-                </p>
+            <h3 class="text-sm font-black uppercase tracking-widest text-white mb-2">Track Your Package</h3>
+            <p class="text-[11px] text-[#646D7B] uppercase tracking-wide mb-4">Enter your tracking number or dispatch
+                code below.</p>
+
+            <!-- Input Field -->
+            <div class="flex gap-2 mb-6">
+                <input type="text" id="trackingInput" placeholder="e.g. PLUG-88239"
+                    class="bg-[#1c1d21] border border-[#202226] rounded px-3 py-2 text-xs text-white uppercase tracking-wider focus:outline-none focus:border-blue-500 flex-1">
+                <button onclick="checkTracking()"
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-black uppercase tracking-widest text-[10px] px-4 rounded transition-colors">Search</button>
             </div>
+
+            <!-- STREAMLINED TRACKING RESULT (Hidden by default) -->
+            <div id="trackingResult" class="hidden space-y-4 border-t border-[#202226] pt-4">
+                <div class="bg-[#1c1d21] border border-[#202226] rounded-md p-4">
+                    <div class="flex justify-between items-center text-[10px] uppercase font-bold tracking-wider mb-2">
+                        <span class="text-[#646D7B]">Order ID:</span>
+                        <span class="text-white" id="displayTrackingCode">PLUGONJERSEYS</span>
+                    </div>
+                    <div class="flex justify-between items-center text-[10px] uppercase font-bold tracking-wider">
+                        <span class="text-[#646D7B]">Status:</span>
+                        <span class="text-blue-400 animate-pulse">Processing / Sourcing</span>
+                    </div>
+                    <p class="text-[10px] text-[#9AA3AE] uppercase leading-relaxed mt-3 border-t border-[#202226] pt-3">
+                        Your order is currently being processed and authenticated by our team. Once dispatched via our
+                        local courier network, you will receive a direct update with your driver's contact details.
+                    </p>
+                </div>
+            </div>
+
         </div>
-        
     </div>
-</div>
 
 
 
-           <!-- SIMPLE JAVASCRIPT SYSTEM -->
+    <!-- SIMPLE JAVASCRIPT SYSTEM -->
     <script>
         // 1. MOBILE MENU TOGGLE LOGIC
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -402,8 +420,8 @@
 
 
 
-    
-   
+
+
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('carousel-container');
             const prevBtn = document.getElementById('carousel-prev');
@@ -413,7 +431,7 @@
 
             const getScrollAmount = () => {
                 // Dynamic shift spacing based on responsive breakpoints
-                if (window.innerWidth >= 1024) return container.offsetWidth / 2; 
+                if (window.innerWidth >= 1024) return container.offsetWidth / 2;
                 return container.offsetWidth * 0.85; // Move 1 card on mobile/tablet
             };
 
@@ -466,38 +484,39 @@
         });
 
 
-   
-   
 
-function toggleFaq(element) {
-    const content = element.nextElementSibling;
-    const icon = element.querySelector('.faq-icon');
-    
-    // Toggle active state
-    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
-        content.style.maxHeight = '0px';
-        icon.style.transform = 'rotate(0deg)';
-        icon.textContent = '+';
-    } else {
-        // Close all other open items first to keep it clean
-        document.querySelectorAll('.faq-content').forEach(el => el.style.maxHeight = '0px');
-        document.querySelectorAll('.faq-icon').forEach(el => {
-            el.style.transform = 'rotate(0deg)';
-            el.textContent = '+';
-        });
-        
-        // Open current item
-        content.style.maxHeight = content.scrollHeight + 'px';
-        icon.style.transform = 'rotate(45deg)';
-        icon.textContent = '×';
-    }
-}
-</script>
 
-      <!-- cursor ring animation -->
+
+        function toggleFaq(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('.faq-icon');
+
+            // Toggle active state
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                content.style.maxHeight = '0px';
+                icon.style.transform = 'rotate(0deg)';
+                icon.textContent = '+';
+            } else {
+                // Close all other open items first to keep it clean
+                document.querySelectorAll('.faq-content').forEach(el => el.style.maxHeight = '0px');
+                document.querySelectorAll('.faq-icon').forEach(el => {
+                    el.style.transform = 'rotate(0deg)';
+                    el.textContent = '+';
+                });
+
+                // Open current item
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.style.transform = 'rotate(45deg)';
+                icon.textContent = '×';
+            }
+        }
+    </script>
+
+    <!-- cursor ring animation -->
     <div id="cursor-dot"></div>
     <div id="cursor-ring"></div>
     <script src="script.js"></script>
 
 </body>
+
 </html>

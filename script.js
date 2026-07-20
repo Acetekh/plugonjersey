@@ -58,3 +58,7 @@ function checkTracking() {
     const badge = document.getElementById('navCartCountBadge');
     if (badge) badge.textContent = totalItems;
   });
+
+
+
+  
